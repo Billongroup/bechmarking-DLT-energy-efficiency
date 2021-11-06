@@ -1,0 +1,11 @@
+- payment-webservice-host: 10.0.20.111
+  payment-webservice-port: '31622'
+  status: 'ON'
+  type: cnode
+  user: 'fisCnodeB'
+- payment-webservice-host: 10.0.20.111
+  payment-webservice-port: '31623'
+  status: 'ON'
+  type: cnode
+  user: 'fisCnodeC'
+
