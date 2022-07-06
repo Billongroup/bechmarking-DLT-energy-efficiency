@@ -1,0 +1,1370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="BillonKYCIdentityManagementInterfaceService"
+  targetNamespace="https://BillonKYCIdentityManagementInterface.dm.billongroup.com/"
+  xmlns:tns="https://BillonKYCIdentityManagementInterface.dm.billongroup.com/"
+  xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:ns2="https://Types.dm.billongroup.com/"
+  xmlns:ns="https://BillonKYCIdentityManagementInterface.dm.billongroup.com/"
+  xmlns:SOAP="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:HTTP="http://schemas.xmlsoap.org/wsdl/http/"
+  xmlns:MIME="http://schemas.xmlsoap.org/wsdl/mime/"
+  xmlns:DIME="http://schemas.xmlsoap.org/ws/2002/04/dime/wsdl/"
+  xmlns:WSDL="http://schemas.xmlsoap.org/wsdl/"
+  xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+<types>
+
+  <schema targetNamespace="https://BillonKYCIdentityManagementInterface.dm.billongroup.com/"
+    xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:ns2="https://Types.dm.billongroup.com/"
+    xmlns:ns="https://BillonKYCIdentityManagementInterface.dm.billongroup.com/"
+    xmlns="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="unqualified"
+    attributeFormDefault="unqualified">
+    <import namespace="https://Types.dm.billongroup.com/" schemaLocation="ns2.xsd"/>
+    <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+    <complexType name="HelloOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__Hello   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="kycGwId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator kyc gw 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="machineId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator maszyny. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="userId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator uzytkownika. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="nodeStatus" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status serwera. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="pid" type="xsd:int" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator procesu. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="userName" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Nazwa uzytkownika. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="miPort" type="xsd:int" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Port serwera VUI. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="soapPort" type="xsd:int" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Port servera SOAP. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="sslRequired" type="xsd:boolean" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Wartosc "true", jezeli serwer wymaga protokol SSL. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="version" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                String zawierajacy informacje o wersji serwera. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="engineVersion" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                String zawierajacy informacje o wersji silnika wykorzystywanego w serwerze. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="apiVersion" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                String zawierajacy informacje o wersji API. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="colonyId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                String zawierajacy identyfikator kolonii. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="publicKey" type="xsd:base64Binary" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Klucz publiczny kyc gw. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="LoadUserKeysInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__LoadUserKeys   Odczytanie zaszyfrowanych kluczy uzytkownika o podanej tozsamosci 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="UUID" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator klienta w systemie blockchain. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="hashFromHashFromPassword" type="xsd:base64Binary" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Skrot ze skrotu z hasla. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="referenceId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator requestu do referencji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="LoadUserKeysOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__LoadUserKeys   Odczytanie zaszyfrowanych kluczy uzytkownika o podanej tozsamosci 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="semiFullIdentityKeysList" type="ns2:SemiFullIdentityKeysList" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Lista kluczy niepelnych tozsamosci odbiorcy. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="referenceId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator requestu do referencji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetPwdRecoveryInfoInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__GetPwdRecoveryInfo   Pobranie informacji potrzebnych do rozpoczecia procesu odzyskania hasla 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="UUID" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator klienta w systemie blockchain 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="channelId" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <documentation>
+                Lista sha hash z (kanalu kominikacji + uuid) 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="referenceId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator requestu do referencji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetPwdRecoveryInfoOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetPwdRecoveryInfo   Pobranie informacji potrzebnych do rozpoczecia procesu odzyskania hasla 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="referenceId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator requestu do referencji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetPwdRecoveryInfoStatusInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__GetPwdRecoveryInfoStatus   Status pobrania informacji potrzebnych do rozpoczecia procesu odzyskania hasla 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="referenceId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator requestu do referencji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetPwdRecoveryInfoStatusOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetPwdRecoveryInfoStatus   Status pobrania informacji potrzebnych do rozpoczecia procesu odzyskania hasla 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="recoveryPartDetails" type="ns2:RecoveryPartDetails" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <documentation>
+                Lista namiarow na sekrety pod danymi kanalami komunikacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="referenceId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator requestu do referencji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="ResetPasswordStep1InParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__ResetPasswordStep1   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="UUID" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator suwerennej tozsamosci uzytkownika. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="institutionBlockchainId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator partnera pomagajacego odzyskac tozsamosc. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="recoveryPartId" type="xsd:base64Binary" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator czesci sekretu. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="channelId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                sha hash z (kanalu kominikacji + uuid). 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="authorizationData" type="xsd:base64Binary" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Paczka danych autoryzacyjnych. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="referenceId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator requestu do referencji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="ResetPasswordStep1OutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__ResetPasswordStep1   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="referenceId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator requestu do referencji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="ResetPasswordStep1StatusInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__ResetPasswordStep1Status   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="referenceId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator requestu do referencji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="ResetPasswordStep1StatusOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__ResetPasswordStep1Status   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="referenceId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator requestu do referencji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="ResetPasswordStep2InParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__ResetPasswordStep2   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="clientAuthentication" type="xsd:base64Binary" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Odpowiedz na challenge. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="referenceId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator requestu do referencji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="ResetPasswordStep2OutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__ResetPasswordStep2   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="referenceId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator requestu do referencji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="ResetPasswordStep2StatusInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__ResetPasswordStep2Status   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="referenceId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator requestu do referencji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="ResetPasswordStep2StatusOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__ResetPasswordStep2Status   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="recoveryKey" type="xsd:base64Binary" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Zaszyfrowany klucz do odzyskiwania hasla. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="referenceId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator requestu do referencji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="SaveKeysInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__SaveKeys   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="UUID" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator suwerennej tozsamosci uzytkownika. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="privateKeys" type="xsd:base64Binary" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Zaszfyrowana paczka kluczy prywatnych uzytkownika. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="kek" type="xsd:base64Binary" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Zaszfyrowany klucz do kluczy uzytkownika. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="hashFromHashFromPassword" type="xsd:base64Binary" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Skrot ze skrotu z hasla 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="recoveryInformation" type="ns2:UserKeysRecoveryInformation" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <documentation>
+                Informacje do odzyskiwania dostepu do kluczy. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="referenceId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator requestu do referencji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="SaveKeysOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__SaveKeys   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="referenceId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator requestu do referencji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="SaveKeysStatusInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__SaveKeysStatus   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="referenceId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator requestu do referencji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="SaveKeysStatusOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__SaveKeysStatus   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="referenceId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator requestu do referencji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="AddFullIdentityStep1InParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__AddFullIdentityStep1   Rozpoczecie tworzenia pelnej tozsamosci Odbiorcy 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="semiFullIdentityDataList" type="ns2:SemiFullIdentityDataList" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Lista krotek zawierajacych koordynaty niepelnych tozsamosci. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="publicKeys" type="xsd:base64Binary" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Publiczne klucze uzytkownika. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="privateKeys" type="xsd:base64Binary" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Prywatne klucze uzytkownika. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="kek" type="xsd:base64Binary" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Klucz do szyfrowania innych kluczy. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="hashFromHashFromPassword" type="xsd:base64Binary" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Skrot ze skrotu z hasla. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="referenceId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator requestu do referencji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="AddFullIdentityStep1OutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__AddFullIdentityStep1   Rozpoczecie tworzenia pelnej tozsamosci Odbiorcy 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="referenceId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator requestu do referencji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="AddFullIdentityStep1StatusInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__AddFullIdentityStep1Status   Status tworzenia pelnej tozsamosci Odbiorcy. 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="referenceId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator requestu do referencji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="AddFullIdentityStep1StatusOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__AddFullIdentityStep1Status   Status tworzenia pelnej tozsamosci Odbiorcy. 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="binaryDataToSign" type="xsd:base64Binary" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Dane do odszyfrowania kluczami prywatnymi. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="referenceId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator requestu do referencji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="AddFullIdentityStep2InParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__AddFullIdentityStep2   Krok tworzenia pelnej tozsamosci Odbiorcy. 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="signedBinaryData" type="xsd:base64Binary" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Odszyfrowane dane z AddFullIdentityStep1Status zlozone w zaszyfrowana wiadomosc. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="referenceId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator requestu do referencji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="AddFullIdentityStep2OutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__AddFullIdentityStep2   Krok tworzenia pelnej tozsamosci Odbiorcy. 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="referenceId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator requestu do referencji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="AddFullIdentityStep2StatusInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__AddFullIdentityStep2Status   Status tworzenia pelnej tozsamosci Odbiorcy. 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="referenceId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator requestu do referencji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="AddFullIdentityStep2StatusOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__AddFullIdentityStep2Status   Status tworzenia pelnej tozsamosci Odbiorcy. 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="uuid" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Adres blockchainowy pelnej tozsamosci. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="semiFullIdentityKeysList" type="ns2:SemiFullIdentityKeysList" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Lista kluczy niepelnych tozsamosci odbiorcy. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="referenceId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator requestu do referencji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="IssueMemberTokenInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__IssueMemberToken   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="userId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Opcjonalny hash uzytkownika do upgradu. Jesli nie ma, wystawimy token in blanco 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="tokenExpiration" type="xsd:long" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Okres waznosci tokena (duration). 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="IssueMemberTokenOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__IssueMemberToken   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="token" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Token dla KycGw Membera do podlaczenia sie do grupy KycGw. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="kycId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator kyc-a 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="tokenExpiration" type="xsd:long" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Termin przydatnosci tokena (time point). 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+  </schema>
+
+</types>
+
+<message name="Hello">
+</message>
+
+<message name="HelloResponse">
+  <part name="outParams" type="ns:HelloOutParams"/><!-- ns__Hello::outParams -->
+</message>
+
+<message name="LoadUserKeys">
+  <part name="inParamsLoadUserKeys" type="ns:LoadUserKeysInParams"/><!-- ns__LoadUserKeys::inParamsLoadUserKeys -->
+</message>
+
+<message name="LoadUserKeysResponse">
+  <part name="outParams" type="ns:LoadUserKeysOutParams"/><!-- ns__LoadUserKeys::outParams -->
+</message>
+
+<message name="GetPwdRecoveryInfo">
+  <part name="inParamsGetPwdRecoveryInfo" type="ns:GetPwdRecoveryInfoInParams"/><!-- ns__GetPwdRecoveryInfo::inParamsGetPwdRecoveryInfo -->
+</message>
+
+<message name="GetPwdRecoveryInfoResponse">
+  <part name="outParams" type="ns:GetPwdRecoveryInfoOutParams"/><!-- ns__GetPwdRecoveryInfo::outParams -->
+</message>
+
+<message name="GetPwdRecoveryInfoStatus">
+  <part name="inParamsGetPwdRecoveryInfoStatus" type="ns:GetPwdRecoveryInfoStatusInParams"/><!-- ns__GetPwdRecoveryInfoStatus::inParamsGetPwdRecoveryInfoStatus -->
+</message>
+
+<message name="GetPwdRecoveryInfoStatusResponse">
+  <part name="outParams" type="ns:GetPwdRecoveryInfoStatusOutParams"/><!-- ns__GetPwdRecoveryInfoStatus::outParams -->
+</message>
+
+<message name="ResetPasswordStep1">
+  <part name="inParamsResetPasswordStep1" type="ns:ResetPasswordStep1InParams"/><!-- ns__ResetPasswordStep1::inParamsResetPasswordStep1 -->
+</message>
+
+<message name="ResetPasswordStep1Response">
+  <part name="outParams" type="ns:ResetPasswordStep1OutParams"/><!-- ns__ResetPasswordStep1::outParams -->
+</message>
+
+<message name="ResetPasswordStep1Status">
+  <part name="inParamsResetPasswordStep1Status" type="ns:ResetPasswordStep1StatusInParams"/><!-- ns__ResetPasswordStep1Status::inParamsResetPasswordStep1Status -->
+</message>
+
+<message name="ResetPasswordStep1StatusResponse">
+  <part name="outParams" type="ns:ResetPasswordStep1StatusOutParams"/><!-- ns__ResetPasswordStep1Status::outParams -->
+</message>
+
+<message name="ResetPasswordStep2">
+  <part name="inParamsResetPasswordStep2" type="ns:ResetPasswordStep2InParams"/><!-- ns__ResetPasswordStep2::inParamsResetPasswordStep2 -->
+</message>
+
+<message name="ResetPasswordStep2Response">
+  <part name="outParams" type="ns:ResetPasswordStep2OutParams"/><!-- ns__ResetPasswordStep2::outParams -->
+</message>
+
+<message name="ResetPasswordStep2Status">
+  <part name="inParamsResetPasswordStep2Status" type="ns:ResetPasswordStep2StatusInParams"/><!-- ns__ResetPasswordStep2Status::inParamsResetPasswordStep2Status -->
+</message>
+
+<message name="ResetPasswordStep2StatusResponse">
+  <part name="outParams" type="ns:ResetPasswordStep2StatusOutParams"/><!-- ns__ResetPasswordStep2Status::outParams -->
+</message>
+
+<message name="SaveKeys">
+  <part name="inParamsSaveKeys" type="ns:SaveKeysInParams"/><!-- ns__SaveKeys::inParamsSaveKeys -->
+</message>
+
+<message name="SaveKeysResponse">
+  <part name="outParams" type="ns:SaveKeysOutParams"/><!-- ns__SaveKeys::outParams -->
+</message>
+
+<message name="SaveKeysStatus">
+  <part name="inParamsSaveKeysStatus" type="ns:SaveKeysStatusInParams"/><!-- ns__SaveKeysStatus::inParamsSaveKeysStatus -->
+</message>
+
+<message name="SaveKeysStatusResponse">
+  <part name="outParams" type="ns:SaveKeysStatusOutParams"/><!-- ns__SaveKeysStatus::outParams -->
+</message>
+
+<message name="AddFullIdentityStep1">
+  <part name="inParamsAddFullIdentityStep1" type="ns:AddFullIdentityStep1InParams"/><!-- ns__AddFullIdentityStep1::inParamsAddFullIdentityStep1 -->
+</message>
+
+<message name="AddFullIdentityStep1Response">
+  <part name="outParams" type="ns:AddFullIdentityStep1OutParams"/><!-- ns__AddFullIdentityStep1::outParams -->
+</message>
+
+<message name="AddFullIdentityStep1Status">
+  <part name="inParamsAddFullIdentityStep1Status" type="ns:AddFullIdentityStep1StatusInParams"/><!-- ns__AddFullIdentityStep1Status::inParamsAddFullIdentityStep1Status -->
+</message>
+
+<message name="AddFullIdentityStep1StatusResponse">
+  <part name="outParams" type="ns:AddFullIdentityStep1StatusOutParams"/><!-- ns__AddFullIdentityStep1Status::outParams -->
+</message>
+
+<message name="AddFullIdentityStep2">
+  <part name="inParamsAddFullIdentityStep2" type="ns:AddFullIdentityStep2InParams"/><!-- ns__AddFullIdentityStep2::inParamsAddFullIdentityStep2 -->
+</message>
+
+<message name="AddFullIdentityStep2Response">
+  <part name="outParams" type="ns:AddFullIdentityStep2OutParams"/><!-- ns__AddFullIdentityStep2::outParams -->
+</message>
+
+<message name="AddFullIdentityStep2Status">
+  <part name="inParamsAddFullIdentityStep2Status" type="ns:AddFullIdentityStep2StatusInParams"/><!-- ns__AddFullIdentityStep2Status::inParamsAddFullIdentityStep2Status -->
+</message>
+
+<message name="AddFullIdentityStep2StatusResponse">
+  <part name="outParams" type="ns:AddFullIdentityStep2StatusOutParams"/><!-- ns__AddFullIdentityStep2Status::outParams -->
+</message>
+
+<message name="IssueMemberToken">
+  <part name="inParamsIssueMemberToken" type="ns:IssueMemberTokenInParams"/><!-- ns__IssueMemberToken::inParamsIssueMemberToken -->
+</message>
+
+<message name="IssueMemberTokenResponse">
+  <part name="outParams" type="ns:IssueMemberTokenOutParams"/><!-- ns__IssueMemberToken::outParams -->
+</message>
+
+<portType name="BillonKYCIdentityManagementInterfaceServicePortType">
+  <operation name="Hello">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:Hello"/>
+    <output message="tns:HelloResponse"/>
+  </operation>
+  <operation name="LoadUserKeys">
+    <documentation>
+      Odczytanie zaszyfrowanych kluczy uzytkownika o podanej tozsamosci 
+    </documentation>
+    <input message="tns:LoadUserKeys"/>
+    <output message="tns:LoadUserKeysResponse"/>
+  </operation>
+  <operation name="GetPwdRecoveryInfo">
+    <documentation>
+      Pobranie informacji potrzebnych do rozpoczecia procesu odzyskania hasla 
+    </documentation>
+    <input message="tns:GetPwdRecoveryInfo"/>
+    <output message="tns:GetPwdRecoveryInfoResponse"/>
+  </operation>
+  <operation name="GetPwdRecoveryInfoStatus">
+    <documentation>
+      Status pobrania informacji potrzebnych do rozpoczecia procesu odzyskania hasla 
+    </documentation>
+    <input message="tns:GetPwdRecoveryInfoStatus"/>
+    <output message="tns:GetPwdRecoveryInfoStatusResponse"/>
+  </operation>
+  <operation name="ResetPasswordStep1">
+    <documentation>
+      TBD 
+    </documentation>
+    <input message="tns:ResetPasswordStep1"/>
+    <output message="tns:ResetPasswordStep1Response"/>
+  </operation>
+  <operation name="ResetPasswordStep1Status">
+    <documentation>
+      TBD 
+    </documentation>
+    <input message="tns:ResetPasswordStep1Status"/>
+    <output message="tns:ResetPasswordStep1StatusResponse"/>
+  </operation>
+  <operation name="ResetPasswordStep2">
+    <documentation>
+      TBD 
+    </documentation>
+    <input message="tns:ResetPasswordStep2"/>
+    <output message="tns:ResetPasswordStep2Response"/>
+  </operation>
+  <operation name="ResetPasswordStep2Status">
+    <documentation>
+      TBD 
+    </documentation>
+    <input message="tns:ResetPasswordStep2Status"/>
+    <output message="tns:ResetPasswordStep2StatusResponse"/>
+  </operation>
+  <operation name="SaveKeys">
+    <documentation>
+      TBD 
+    </documentation>
+    <input message="tns:SaveKeys"/>
+    <output message="tns:SaveKeysResponse"/>
+  </operation>
+  <operation name="SaveKeysStatus">
+    <documentation>
+      TBD 
+    </documentation>
+    <input message="tns:SaveKeysStatus"/>
+    <output message="tns:SaveKeysStatusResponse"/>
+  </operation>
+  <operation name="AddFullIdentityStep1">
+    <documentation>
+      Rozpoczecie tworzenia pelnej tozsamosci Odbiorcy 
+    </documentation>
+    <input message="tns:AddFullIdentityStep1"/>
+    <output message="tns:AddFullIdentityStep1Response"/>
+  </operation>
+  <operation name="AddFullIdentityStep1Status">
+    <documentation>
+      Status tworzenia pelnej tozsamosci Odbiorcy. 
+    </documentation>
+    <input message="tns:AddFullIdentityStep1Status"/>
+    <output message="tns:AddFullIdentityStep1StatusResponse"/>
+  </operation>
+  <operation name="AddFullIdentityStep2">
+    <documentation>
+      Krok tworzenia pelnej tozsamosci Odbiorcy. 
+    </documentation>
+    <input message="tns:AddFullIdentityStep2"/>
+    <output message="tns:AddFullIdentityStep2Response"/>
+  </operation>
+  <operation name="AddFullIdentityStep2Status">
+    <documentation>
+      Status tworzenia pelnej tozsamosci Odbiorcy. 
+    </documentation>
+    <input message="tns:AddFullIdentityStep2Status"/>
+    <output message="tns:AddFullIdentityStep2StatusResponse"/>
+  </operation>
+  <operation name="IssueMemberToken">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:IssueMemberToken"/>
+    <output message="tns:IssueMemberTokenResponse"/>
+  </operation>
+</portType>
+
+<binding name="BillonKYCIdentityManagementInterfacePortBinding" type="tns:BillonKYCIdentityManagementInterfaceServicePortType">
+  <SOAP:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+  <operation name="Hello">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://BillonKYCIdentityManagementInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://BillonKYCIdentityManagementInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="LoadUserKeys">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://BillonKYCIdentityManagementInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://BillonKYCIdentityManagementInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetPwdRecoveryInfo">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://BillonKYCIdentityManagementInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://BillonKYCIdentityManagementInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetPwdRecoveryInfoStatus">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://BillonKYCIdentityManagementInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://BillonKYCIdentityManagementInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="ResetPasswordStep1">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://BillonKYCIdentityManagementInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://BillonKYCIdentityManagementInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="ResetPasswordStep1Status">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://BillonKYCIdentityManagementInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://BillonKYCIdentityManagementInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="ResetPasswordStep2">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://BillonKYCIdentityManagementInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://BillonKYCIdentityManagementInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="ResetPasswordStep2Status">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://BillonKYCIdentityManagementInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://BillonKYCIdentityManagementInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="SaveKeys">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://BillonKYCIdentityManagementInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://BillonKYCIdentityManagementInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="SaveKeysStatus">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://BillonKYCIdentityManagementInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://BillonKYCIdentityManagementInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="AddFullIdentityStep1">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://BillonKYCIdentityManagementInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://BillonKYCIdentityManagementInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="AddFullIdentityStep1Status">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://BillonKYCIdentityManagementInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://BillonKYCIdentityManagementInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="AddFullIdentityStep2">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://BillonKYCIdentityManagementInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://BillonKYCIdentityManagementInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="AddFullIdentityStep2Status">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://BillonKYCIdentityManagementInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://BillonKYCIdentityManagementInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="IssueMemberToken">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://BillonKYCIdentityManagementInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://BillonKYCIdentityManagementInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+</binding>
+
+<service name="BillonKYCIdentityManagementInterfaceService">
+  <documentation>gSOAP 2.8.95 generated service definition</documentation>
+  <port name="BillonKYCIdentityManagementInterfaceService" binding="tns:BillonKYCIdentityManagementInterfacePortBinding">
+    <SOAP:address location="REPLACE_WITH_ACTUAL_URL"/>
+  </port>
+</service>
+
+</definitions>

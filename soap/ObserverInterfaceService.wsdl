@@ -1,0 +1,586 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="ObserverInterfaceService"
+  targetNamespace="https://ObserverInterface.dm.billongroup.com/"
+  xmlns:tns="https://ObserverInterface.dm.billongroup.com/"
+  xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:ns2="https://Types.dm.billongroup.com/"
+  xmlns:ns="https://ObserverInterface.dm.billongroup.com/"
+  xmlns:SOAP="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:HTTP="http://schemas.xmlsoap.org/wsdl/http/"
+  xmlns:MIME="http://schemas.xmlsoap.org/wsdl/mime/"
+  xmlns:DIME="http://schemas.xmlsoap.org/ws/2002/04/dime/wsdl/"
+  xmlns:WSDL="http://schemas.xmlsoap.org/wsdl/"
+  xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+<types>
+
+  <schema targetNamespace="https://ObserverInterface.dm.billongroup.com/"
+    xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:ns2="https://Types.dm.billongroup.com/"
+    xmlns:ns="https://ObserverInterface.dm.billongroup.com/"
+    xmlns="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="unqualified"
+    attributeFormDefault="unqualified">
+    <import namespace="https://Types.dm.billongroup.com/" schemaLocation="ns2.xsd"/>
+    <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+    <complexType name="HelloOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__Hello   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="observerId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Id tego Obserwatora. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="RequestDocumentInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__RequestDocument   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="documentBlockchainAddress" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                [base58] Adres opublikowanego dokumentu. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="publisherId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator publikatora 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="requestTimeout" type="xsd:dateTime" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Do kiedy request ma byc obsluzony przez publikatora. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="RequestDocumentOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__RequestDocument   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="RequestDocumentStatusInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__RequestDocumentStatus   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="RequestDocumentStatusOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__RequestDocumentStatus   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="requestDescription" type="ns2:ObserverRequestedDocumentDescription" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Opis requestu. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetRequestedDocumentListInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__GetRequestedDocumentList   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="lastStatusUpdateFrom" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Minimalny czas zmiany statusu zadania. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="lastStatusUpdateTo" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Maksymalny czas zmiany statusu zadania. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="status" type="ns2:ObserverRequestDocumentStatus" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Z jakim statusem interesuja nas zapytania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetRequestedDocumentListOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetRequestedDocumentList   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetRequestedDocumentListStatusInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__GetRequestedDocumentListStatus   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetRequestedDocumentListStatusOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetRequestedDocumentListStatus   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="documents" type="ns2:ObserverRequestedDocumentDescription" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <documentation>
+                Opis stanu dokumentow, o ktore poprosilismy o dostep. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetRequestedDocumentInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__GetRequestedDocument   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="documentBlockchainAddress" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                [base58] Adres opublikowanego dokumentu. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetRequestedDocumentOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetRequestedDocument   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetRequestedDocumentStatusInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__GetRequestedDocumentStatus   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetRequestedDocumentStatusOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetRequestedDocumentStatus   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="documentInfo" type="ns2:BLOCKCHAINDocumentInfo" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Wszystkie dane dokumentu. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="IssueMemberTokenInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__IssueMemberToken   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="userId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Opcjonalny hash uzytkownika do upgradu. Jesli nie ma, wystawimy token in blanco 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="tokenExpiration" type="xsd:long" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Okres waznosci tokena (duration). 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="IssueMemberTokenOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__IssueMemberToken   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="token" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Token dla Observer Membera do podlaczenia sie do grupy observera. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="observerId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator observera 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="tokenExpiration" type="xsd:long" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Termin przydatnosci tokena (time point). 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+  </schema>
+
+</types>
+
+<message name="Hello">
+</message>
+
+<message name="HelloResponse">
+  <part name="outParams" type="ns:HelloOutParams"/><!-- ns__Hello::outParams -->
+</message>
+
+<message name="RequestDocument">
+  <part name="inParamsRequestDocument" type="ns:RequestDocumentInParams"/><!-- ns__RequestDocument::inParamsRequestDocument -->
+</message>
+
+<message name="RequestDocumentResponse">
+  <part name="outParams" type="ns:RequestDocumentOutParams"/><!-- ns__RequestDocument::outParams -->
+</message>
+
+<message name="RequestDocumentStatus">
+  <part name="inParamsRequestDocumentStatus" type="ns:RequestDocumentStatusInParams"/><!-- ns__RequestDocumentStatus::inParamsRequestDocumentStatus -->
+</message>
+
+<message name="RequestDocumentStatusResponse">
+  <part name="outParams" type="ns:RequestDocumentStatusOutParams"/><!-- ns__RequestDocumentStatus::outParams -->
+</message>
+
+<message name="GetRequestedDocumentList">
+  <part name="inParamsGetRequestedDocumentList" type="ns:GetRequestedDocumentListInParams"/><!-- ns__GetRequestedDocumentList::inParamsGetRequestedDocumentList -->
+</message>
+
+<message name="GetRequestedDocumentListResponse">
+  <part name="outParams" type="ns:GetRequestedDocumentListOutParams"/><!-- ns__GetRequestedDocumentList::outParams -->
+</message>
+
+<message name="GetRequestedDocumentListStatus">
+  <part name="inParamsGetRequestedDocumentListStatus" type="ns:GetRequestedDocumentListStatusInParams"/><!-- ns__GetRequestedDocumentListStatus::inParamsGetRequestedDocumentListStatus -->
+</message>
+
+<message name="GetRequestedDocumentListStatusResponse">
+  <part name="outParams" type="ns:GetRequestedDocumentListStatusOutParams"/><!-- ns__GetRequestedDocumentListStatus::outParams -->
+</message>
+
+<message name="GetRequestedDocument">
+  <part name="inParamsGetRequestedDocument" type="ns:GetRequestedDocumentInParams"/><!-- ns__GetRequestedDocument::inParamsGetRequestedDocument -->
+</message>
+
+<message name="GetRequestedDocumentResponse">
+  <part name="outParams" type="ns:GetRequestedDocumentOutParams"/><!-- ns__GetRequestedDocument::outParams -->
+</message>
+
+<message name="GetRequestedDocumentStatus">
+  <part name="inParamsGetRequestedDocumentStatus" type="ns:GetRequestedDocumentStatusInParams"/><!-- ns__GetRequestedDocumentStatus::inParamsGetRequestedDocumentStatus -->
+</message>
+
+<message name="GetRequestedDocumentStatusResponse">
+  <part name="outParams" type="ns:GetRequestedDocumentStatusOutParams"/><!-- ns__GetRequestedDocumentStatus::outParams -->
+</message>
+
+<message name="IssueMemberToken">
+  <part name="inParamsIssueMemberToken" type="ns:IssueMemberTokenInParams"/><!-- ns__IssueMemberToken::inParamsIssueMemberToken -->
+</message>
+
+<message name="IssueMemberTokenResponse">
+  <part name="outParams" type="ns:IssueMemberTokenOutParams"/><!-- ns__IssueMemberToken::outParams -->
+</message>
+
+<portType name="ObserverInterfaceServicePortType">
+  <operation name="Hello">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:Hello"/>
+    <output message="tns:HelloResponse"/>
+  </operation>
+  <operation name="RequestDocument">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:RequestDocument"/>
+    <output message="tns:RequestDocumentResponse"/>
+  </operation>
+  <operation name="RequestDocumentStatus">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:RequestDocumentStatus"/>
+    <output message="tns:RequestDocumentStatusResponse"/>
+  </operation>
+  <operation name="GetRequestedDocumentList">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:GetRequestedDocumentList"/>
+    <output message="tns:GetRequestedDocumentListResponse"/>
+  </operation>
+  <operation name="GetRequestedDocumentListStatus">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:GetRequestedDocumentListStatus"/>
+    <output message="tns:GetRequestedDocumentListStatusResponse"/>
+  </operation>
+  <operation name="GetRequestedDocument">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:GetRequestedDocument"/>
+    <output message="tns:GetRequestedDocumentResponse"/>
+  </operation>
+  <operation name="GetRequestedDocumentStatus">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:GetRequestedDocumentStatus"/>
+    <output message="tns:GetRequestedDocumentStatusResponse"/>
+  </operation>
+  <operation name="IssueMemberToken">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:IssueMemberToken"/>
+    <output message="tns:IssueMemberTokenResponse"/>
+  </operation>
+</portType>
+
+<binding name="ObserverInterfacePortBinding" type="tns:ObserverInterfaceServicePortType">
+  <SOAP:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+  <operation name="Hello">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://ObserverInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://ObserverInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="RequestDocument">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://ObserverInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://ObserverInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="RequestDocumentStatus">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://ObserverInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://ObserverInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetRequestedDocumentList">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://ObserverInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://ObserverInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetRequestedDocumentListStatus">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://ObserverInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://ObserverInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetRequestedDocument">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://ObserverInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://ObserverInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetRequestedDocumentStatus">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://ObserverInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://ObserverInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="IssueMemberToken">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://ObserverInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://ObserverInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+</binding>
+
+<service name="ObserverInterfaceService">
+  <documentation>gSOAP 2.8.95 generated service definition</documentation>
+  <port name="ObserverInterfaceService" binding="tns:ObserverInterfacePortBinding">
+    <SOAP:address location="REPLACE_WITH_ACTUAL_URL"/>
+  </port>
+</service>
+
+</definitions>

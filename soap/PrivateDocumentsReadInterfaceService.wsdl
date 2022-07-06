@@ -1,0 +1,1251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="PrivateDocumentsReadInterfaceService"
+  targetNamespace="https://PrivateDocumentsReadInterface.dm.billongroup.com/"
+  xmlns:tns="https://PrivateDocumentsReadInterface.dm.billongroup.com/"
+  xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:ns2="https://Types.dm.billongroup.com/"
+  xmlns:ns="https://PrivateDocumentsReadInterface.dm.billongroup.com/"
+  xmlns:SOAP="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:HTTP="http://schemas.xmlsoap.org/wsdl/http/"
+  xmlns:MIME="http://schemas.xmlsoap.org/wsdl/mime/"
+  xmlns:DIME="http://schemas.xmlsoap.org/ws/2002/04/dime/wsdl/"
+  xmlns:WSDL="http://schemas.xmlsoap.org/wsdl/"
+  xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+<types>
+
+  <schema targetNamespace="https://PrivateDocumentsReadInterface.dm.billongroup.com/"
+    xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:ns2="https://Types.dm.billongroup.com/"
+    xmlns:ns="https://PrivateDocumentsReadInterface.dm.billongroup.com/"
+    xmlns="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="unqualified"
+    attributeFormDefault="unqualified">
+    <import namespace="https://Types.dm.billongroup.com/" schemaLocation="ns2.xsd"/>
+    <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+    <complexType name="SignedMetadata">
+      <annotation>
+        <documentation>
+          TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="publisherInfoDocumentBlockchainAddress" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                [base58] Adres blokchainowy dokumentu danych publikatora. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="previousDocumentBlockchainAddress" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                [base58] Adres blokchainowy poprzedniej wersji dokumentu. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="title" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Tytul dokumentu. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="versionName" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Oznaczenie wersji dokumentu nadawane przez publikatora. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="documentSystemCategory" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Przypisanie dokumentu do jednej z kategorii systemowych. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="documentMainCategory" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Glowna kategoria dokumentu z drzewa kategorii publikatora. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="documentAdditionalCategories" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <documentation>
+                Dodatkowe katgorie dokumentu z drzewa kategorii publikatora. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="legalValidityStartDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Formalna data prawna od ktorej dokument zaczyna obowiazywac. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="legalValidityFinishDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Formalna data prawna zakonczenia obowiazywania dokumentu. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="retentionDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Data zakonczenia przechowywania dokumentu 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="creationDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Data stworzenia dokumentu 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="publicationDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Uproszczona data opublikowania dokumentu 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="BLOCKCHAINlegalValidityStartDate" type="xsd:long" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Formalna data prawna od ktorej dokument zaczyna obowiazywac. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="BLOCKCHAINlegalValidityFinishDate" type="xsd:long" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Formalna data prawna zakonczenia obowiazywania dokumentu. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="BLOCKCHAINretentionDate" type="xsd:long" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Data zakonczenia przechowywania dokumentu 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="certificateFingerprint" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Skrot certyfikatu publicznego Publikatora. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="signatoryId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                (opcjonalna) Identyfikator skladajacego podpis na publikacji dokumentu. W konfiguracji mozna ustawic ze jest wymagany. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="additionalDetails" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                (opcjonalne) JSON Zestaw dodatkowych atrybutow dokumentu, specyficznych dla Publikatora 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="privateAdditionalDetails" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                (opcjonalne) JSON Zestaw dodatkowych atrybutow dokumentu, specyficznych dla Publikatora 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="Common">
+      <annotation>
+        <documentation>
+          TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="publicationMode" type="ns2:PublicationMode" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Typ publikacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="agreementPublicationMode" type="ns2:AgreementPublicationMode" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Typ publikacji dla zdalnego podpisu 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="publisherId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator publikatora 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="referenceId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator requestu do referencji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="HelloInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__Hello   Pobiera opis stanu wezla. 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="referenceId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Referencyjny id requestu. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="HelloOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__Hello   Pobiera opis stanu wezla. 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="machineId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator maszyny. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="userId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator uzytkownika. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="nodeStatus" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status serwera VUI. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="pid" type="xsd:int" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator procesu. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="daemon" type="xsd:boolean" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Wartosc "true", jezeli serwer jest demonem. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="userName" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Nazwa uzytkownika. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="miPort" type="xsd:int" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Port serwera VUI. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="soapPort" type="xsd:int" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Port servera SOAP. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="sslRequired" type="xsd:boolean" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Wartosc "true", jezeli serwer wymaga protokol SSL. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="version" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                String zawierajacy informacje o wersji serwera. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="engineVersion" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                String zawierajacy informacje o wersji silnika wykorzystywanego w serwerze. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="apiVersion" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                String zawierajacy informacje o wersji API. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetEncryptedKeysInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__GetEncryptedKeys   Pobiera zaszyfrowane klucze tozsamosci o podanym identyfikatorze UUID 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="UUID" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Unikatowy identyfikator tozsamosci w systemie Blockchain. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="referenceId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Referencyjny id requestu. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="kycCif" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator klienta bramy kyc. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="hash" type="xsd:base64Binary" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Skrot SHA 256 e stringu bikCif+haslo 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetEncryptedKeysOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetEncryptedKeys   Pobiera zaszyfrowane klucze tozsamosci o podanym identyfikatorze UUID 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="encryptedKeys" type="xsd:base64Binary" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Zaszyfrowane klucze. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="kek" type="xsd:base64Binary" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                tbd 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetDocumentIndexInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__GetDocumentIndex   Pobiera liste adresow dokumentow prywatnych opublikowanych dla tozsamosci o podanym identyfikatorze UUID 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="referenceId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Referencyjny id requestu. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="UUID" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Unikatowy identyfikator tozsamosci w systemie Blockchain. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="kycGatewayId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Id kyc gateway w ktorym zostala zalozona tozsamosc 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetDocumentIndexOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetDocumentIndex   Pobiera liste adresow dokumentow prywatnych opublikowanych dla tozsamosci o podanym identyfikatorze UUID 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="indexEntriesList" type="ns2:IndexEntry" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <documentation>
+                Lista wpisow indeksow dokumentow. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetDocumentCatalogInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__GetDocumentCatalog   Zapytanie sluzace do pobrania zaszyfrowanego katalogu kompilatow dokumentu. 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="referenceId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Referencyjny id requestu. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="documentBlockchainAddress" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Adres dokumentu do odczytania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetDocumentCatalogOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetDocumentCatalog   Zapytanie sluzace do pobrania zaszyfrowanego katalogu kompilatow dokumentu. 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="documentInfo" type="ns2:DocumentInfo" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Informacja o odczytywanym dokumencie (informacje z  publikacji, w tym sygnatura). 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="encryptedSensitiveContent" type="xsd:base64Binary" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Zaszyfrowane dane wrazliwe dokumentu (metadane i katalog kompilatow) 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="encryptedCekList" type="ns2:EncryptedCekList" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Lista zaszyfrowanych kluczy CEK. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetDocumentInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__GetDocument   Pobiera zaszyfrowany dokument na podstawie "katalogu kompilatow". 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="referenceId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Referencyjny id requestu. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="catalogOfDocumentContent" type="xsd:base64Binary" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Odszyfrowany katalog kompilatow. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="documentBlockchainAddress" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Adres dokumentu do odczytania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetDocumentOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetDocument   Pobiera zaszyfrowany dokument na podstawie "katalogu kompilatow". 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="encryptedDocumentContent" type="xsd:base64Binary" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Zadzyfrowany dokument. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="IsNewestDocumentVersionInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__IsNewestDocumentVersion   Zwraca informacje czy podany dokument jest najnowsza wersja. 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="referenceId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Referencyjny id requestu. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="documentBlockchainAddress" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Adres (identyfikator) dokumentu. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="publisherId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator publikatora. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="IsNewestDocumentVersionOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__IsNewestDocumentVersion   Zwraca informacje czy podany dokument jest najnowsza wersja. 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="isNewestVersion" type="xsd:boolean" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Informacja czy dokument jest najnowsza wersja. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetDocumentVersionsInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__GetDocumentVersions   Zwraca zbior dokumentow powiazanych z danym dokumentem (jego starsze i nowsze wersje). 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="referenceId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Referencyjny id requestu. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="documentBlockchainAddress" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Adres (identyfikator) dokumentu. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="publisherId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator publikatora. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetDocumentVersionsOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetDocumentVersions   Zwraca zbior dokumentow powiazanych z danym dokumentem (jego starsze i nowsze wersje). 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="relatedDocuments" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <documentation>
+                Zbior adresow powiazanych dokumentow. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="LoadUserKeysInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__LoadUserKeys   Odczytanie zaszyfrowanych kluczy uzytkownika o podanej tozsamosci 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="referenceId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Referencyjny id requestu. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="hashFromHashFromPassword" type="xsd:base64Binary" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Skrot ze skrotu z hasla 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="UUID" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Unikatowy identyfikator tozsamosci w systemie Blockchain. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="LoadUserKeysOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__LoadUserKeys   Odczytanie zaszyfrowanych kluczy uzytkownika o podanej tozsamosci 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="semiFullIdentityKeysList" type="ns2:SemiFullIdentityKeysList" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Lista kluczy niepelnych tozsamosci odbiorcy 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="ForwardSignedDocumentInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__ForwardSignedDocument   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="referenceId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Referencyjny id requestu. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="encryptedSignedDocument" type="xsd:base64Binary" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Zaszyfrowana odpowiedz klienta (zawiera podpisany dokument lub odmowe) 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="responseSignature" type="xsd:base64Binary" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Podpis odpowiedzi klienta 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="publisherId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator publikatora. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="ForwardSignedDocumentOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__ForwardSignedDocument   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetFolderIndexInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__GetFolderIndex   Pobiera liste adresow dokumentow prywatnych dodanych do teczki 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="referenceId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Referencyjny id requestu. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="folderId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator folderu. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetFolderIndexOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetFolderIndex   Pobiera liste adresow dokumentow prywatnych dodanych do teczki 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="indexEntriesList" type="ns2:IndexEntry" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <documentation>
+                Lista wpisow indeksow dokumentow. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetPartnerEncryptionKeyInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__GetPartnerEncryptionKey   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="referenceId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Referencyjny id requestu. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="partnerBlockchainId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Id partnera w base58. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="keyMinValidityDate" type="xsd:dateTime" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Minimalna waznosc klucza. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetPartnerEncryptionKeyOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetPartnerEncryptionKey   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="referenceId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Referencyjny id requestu. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="keyInfo" type="ns2:KeyInfo" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Informacje o kluczu. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="AddEventToPublisherInboxInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__AddEventToPublisherInbox   Dodaje zdarzenie do skrzynki odbiorczej publikatora 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="publisherId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator publikatora 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="retentionDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Data zakonczenia przechowywania dokumentu 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="signedEventToken" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Token uprawniajacy do zapisania eventu w skrzynce publikatora 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="encryptedSensitiveEventData" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Dane wrazliwe eventu z podpisem zaszyfrowane kluczem publikatora 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="AddEventToPublisherInboxOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__AddEventToPublisherInbox   Dodaje zdarzenie do skrzynki odbiorczej publikatora 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+  </schema>
+
+</types>
+
+<message name="Hello">
+  <part name="inParamsHello" type="ns:HelloInParams"/><!-- ns__Hello::inParamsHello -->
+</message>
+
+<message name="HelloResponse">
+  <part name="outParams" type="ns:HelloOutParams"/><!-- ns__Hello::outParams -->
+</message>
+
+<message name="GetEncryptedKeys">
+  <part name="inParamsGetEncryptedKeys" type="ns:GetEncryptedKeysInParams"/><!-- ns__GetEncryptedKeys::inParamsGetEncryptedKeys -->
+</message>
+
+<message name="GetEncryptedKeysResponse">
+  <part name="outParams" type="ns:GetEncryptedKeysOutParams"/><!-- ns__GetEncryptedKeys::outParams -->
+</message>
+
+<message name="GetDocumentIndex">
+  <part name="inParamsGetDocumentIndex" type="ns:GetDocumentIndexInParams"/><!-- ns__GetDocumentIndex::inParamsGetDocumentIndex -->
+</message>
+
+<message name="GetDocumentIndexResponse">
+  <part name="outParams" type="ns:GetDocumentIndexOutParams"/><!-- ns__GetDocumentIndex::outParams -->
+</message>
+
+<message name="GetDocumentCatalog">
+  <part name="inParamsGetDocumentCatalog" type="ns:GetDocumentCatalogInParams"/><!-- ns__GetDocumentCatalog::inParamsGetDocumentCatalog -->
+</message>
+
+<message name="GetDocumentCatalogResponse">
+  <part name="outParams" type="ns:GetDocumentCatalogOutParams"/><!-- ns__GetDocumentCatalog::outParams -->
+</message>
+
+<message name="GetDocument">
+  <part name="inParamsGetDocument" type="ns:GetDocumentInParams"/><!-- ns__GetDocument::inParamsGetDocument -->
+</message>
+
+<message name="GetDocumentResponse">
+  <part name="outParams" type="ns:GetDocumentOutParams"/><!-- ns__GetDocument::outParams -->
+</message>
+
+<message name="IsNewestDocumentVersion">
+  <part name="inParamsIsNewestDocumentVersion" type="ns:IsNewestDocumentVersionInParams"/><!-- ns__IsNewestDocumentVersion::inParamsIsNewestDocumentVersion -->
+</message>
+
+<message name="IsNewestDocumentVersionResponse">
+  <part name="outParams" type="ns:IsNewestDocumentVersionOutParams"/><!-- ns__IsNewestDocumentVersion::outParams -->
+</message>
+
+<message name="GetDocumentVersions">
+  <part name="inParamsGetDocumentVersions" type="ns:GetDocumentVersionsInParams"/><!-- ns__GetDocumentVersions::inParamsGetDocumentVersions -->
+</message>
+
+<message name="GetDocumentVersionsResponse">
+  <part name="outParams" type="ns:GetDocumentVersionsOutParams"/><!-- ns__GetDocumentVersions::outParams -->
+</message>
+
+<message name="LoadUserKeys">
+  <part name="inParamsLoadUserKeys" type="ns:LoadUserKeysInParams"/><!-- ns__LoadUserKeys::inParamsLoadUserKeys -->
+</message>
+
+<message name="LoadUserKeysResponse">
+  <part name="outParams" type="ns:LoadUserKeysOutParams"/><!-- ns__LoadUserKeys::outParams -->
+</message>
+
+<message name="ForwardSignedDocument">
+  <part name="inParamsForwardSignedDocument" type="ns:ForwardSignedDocumentInParams"/><!-- ns__ForwardSignedDocument::inParamsForwardSignedDocument -->
+</message>
+
+<message name="ForwardSignedDocumentResponse">
+  <part name="outParams" type="ns:ForwardSignedDocumentOutParams"/><!-- ns__ForwardSignedDocument::outParams -->
+</message>
+
+<message name="GetFolderIndex">
+  <part name="inParamsGetFolderIndex" type="ns:GetFolderIndexInParams"/><!-- ns__GetFolderIndex::inParamsGetFolderIndex -->
+</message>
+
+<message name="GetFolderIndexResponse">
+  <part name="outParams" type="ns:GetFolderIndexOutParams"/><!-- ns__GetFolderIndex::outParams -->
+</message>
+
+<message name="GetPartnerEncryptionKey">
+  <part name="inParamsGetPartnerEncryptionKey" type="ns:GetPartnerEncryptionKeyInParams"/><!-- ns__GetPartnerEncryptionKey::inParamsGetPartnerEncryptionKey -->
+</message>
+
+<message name="GetPartnerEncryptionKeyResponse">
+  <part name="outParams" type="ns:GetPartnerEncryptionKeyOutParams"/><!-- ns__GetPartnerEncryptionKey::outParams -->
+</message>
+
+<message name="AddEventToPublisherInbox">
+  <part name="inParamsAddEventToPublisherInbox" type="ns:AddEventToPublisherInboxInParams"/><!-- ns__AddEventToPublisherInbox::inParamsAddEventToPublisherInbox -->
+</message>
+
+<message name="AddEventToPublisherInboxResponse">
+  <part name="outParams" type="ns:AddEventToPublisherInboxOutParams"/><!-- ns__AddEventToPublisherInbox::outParams -->
+</message>
+
+<portType name="PrivateDocumentsReadInterfaceServicePortType">
+  <operation name="Hello">
+    <documentation>
+      Pobiera opis stanu wezla. 
+    </documentation>
+    <input message="tns:Hello"/>
+    <output message="tns:HelloResponse"/>
+  </operation>
+  <operation name="GetEncryptedKeys">
+    <documentation>
+      Pobiera zaszyfrowane klucze tozsamosci o podanym identyfikatorze UUID 
+    </documentation>
+    <input message="tns:GetEncryptedKeys"/>
+    <output message="tns:GetEncryptedKeysResponse"/>
+  </operation>
+  <operation name="GetDocumentIndex">
+    <documentation>
+      Pobiera liste adresow dokumentow prywatnych opublikowanych dla tozsamosci o podanym identyfikatorze UUID 
+    </documentation>
+    <input message="tns:GetDocumentIndex"/>
+    <output message="tns:GetDocumentIndexResponse"/>
+  </operation>
+  <operation name="GetDocumentCatalog">
+    <documentation>
+      Zapytanie sluzace do pobrania zaszyfrowanego katalogu kompilatow dokumentu. 
+    </documentation>
+    <input message="tns:GetDocumentCatalog"/>
+    <output message="tns:GetDocumentCatalogResponse"/>
+  </operation>
+  <operation name="GetDocument">
+    <documentation>
+      Pobiera zaszyfrowany dokument na podstawie "katalogu kompilatow". 
+    </documentation>
+    <input message="tns:GetDocument"/>
+    <output message="tns:GetDocumentResponse"/>
+  </operation>
+  <operation name="IsNewestDocumentVersion">
+    <documentation>
+      Zwraca informacje czy podany dokument jest najnowsza wersja. 
+    </documentation>
+    <input message="tns:IsNewestDocumentVersion"/>
+    <output message="tns:IsNewestDocumentVersionResponse"/>
+  </operation>
+  <operation name="GetDocumentVersions">
+    <documentation>
+      Zwraca zbior dokumentow powiazanych z danym dokumentem (jego starsze i nowsze wersje). 
+    </documentation>
+    <input message="tns:GetDocumentVersions"/>
+    <output message="tns:GetDocumentVersionsResponse"/>
+  </operation>
+  <operation name="LoadUserKeys">
+    <documentation>
+      Odczytanie zaszyfrowanych kluczy uzytkownika o podanej tozsamosci 
+    </documentation>
+    <input message="tns:LoadUserKeys"/>
+    <output message="tns:LoadUserKeysResponse"/>
+  </operation>
+  <operation name="ForwardSignedDocument">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:ForwardSignedDocument"/>
+    <output message="tns:ForwardSignedDocumentResponse"/>
+  </operation>
+  <operation name="GetFolderIndex">
+    <documentation>
+      Pobiera liste adresow dokumentow prywatnych dodanych do teczki 
+    </documentation>
+    <input message="tns:GetFolderIndex"/>
+    <output message="tns:GetFolderIndexResponse"/>
+  </operation>
+  <operation name="GetPartnerEncryptionKey">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:GetPartnerEncryptionKey"/>
+    <output message="tns:GetPartnerEncryptionKeyResponse"/>
+  </operation>
+  <operation name="AddEventToPublisherInbox">
+    <documentation>
+      Dodaje zdarzenie do skrzynki odbiorczej publikatora 
+    </documentation>
+    <input message="tns:AddEventToPublisherInbox"/>
+    <output message="tns:AddEventToPublisherInboxResponse"/>
+  </operation>
+</portType>
+
+<binding name="PrivateDocumentsReadInterfacePortBinding" type="tns:PrivateDocumentsReadInterfaceServicePortType">
+  <SOAP:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+  <operation name="Hello">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://PrivateDocumentsReadInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://PrivateDocumentsReadInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetEncryptedKeys">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://PrivateDocumentsReadInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://PrivateDocumentsReadInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetDocumentIndex">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://PrivateDocumentsReadInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://PrivateDocumentsReadInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetDocumentCatalog">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://PrivateDocumentsReadInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://PrivateDocumentsReadInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetDocument">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://PrivateDocumentsReadInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://PrivateDocumentsReadInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="IsNewestDocumentVersion">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://PrivateDocumentsReadInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://PrivateDocumentsReadInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetDocumentVersions">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://PrivateDocumentsReadInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://PrivateDocumentsReadInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="LoadUserKeys">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://PrivateDocumentsReadInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://PrivateDocumentsReadInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="ForwardSignedDocument">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://PrivateDocumentsReadInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://PrivateDocumentsReadInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetFolderIndex">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://PrivateDocumentsReadInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://PrivateDocumentsReadInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetPartnerEncryptionKey">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://PrivateDocumentsReadInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://PrivateDocumentsReadInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="AddEventToPublisherInbox">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://PrivateDocumentsReadInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://PrivateDocumentsReadInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+</binding>
+
+<service name="PrivateDocumentsReadInterfaceService">
+  <documentation>gSOAP 2.8.95 generated service definition</documentation>
+  <port name="PrivateDocumentsReadInterfaceService" binding="tns:PrivateDocumentsReadInterfacePortBinding">
+    <SOAP:address location="REPLACE_WITH_ACTUAL_URL"/>
+  </port>
+</service>
+
+</definitions>

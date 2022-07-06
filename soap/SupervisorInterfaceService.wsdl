@@ -1,0 +1,1119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="SupervisorInterfaceService"
+  targetNamespace="https://SupervisorInterface.dm.billongroup.com/"
+  xmlns:tns="https://SupervisorInterface.dm.billongroup.com/"
+  xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:ns2="https://Types.dm.billongroup.com/"
+  xmlns:ns="https://SupervisorInterface.dm.billongroup.com/"
+  xmlns:SOAP="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:HTTP="http://schemas.xmlsoap.org/wsdl/http/"
+  xmlns:MIME="http://schemas.xmlsoap.org/wsdl/mime/"
+  xmlns:DIME="http://schemas.xmlsoap.org/ws/2002/04/dime/wsdl/"
+  xmlns:WSDL="http://schemas.xmlsoap.org/wsdl/"
+  xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+<types>
+
+  <schema targetNamespace="https://SupervisorInterface.dm.billongroup.com/"
+    xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:ns2="https://Types.dm.billongroup.com/"
+    xmlns:ns="https://SupervisorInterface.dm.billongroup.com/"
+    xmlns="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="unqualified"
+    attributeFormDefault="unqualified">
+    <import namespace="https://Types.dm.billongroup.com/" schemaLocation="ns2.xsd"/>
+    <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+    <complexType name="HelloOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__Hello   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="AddPublisherInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__AddPublisher   Zapytanie sluzace do dodania nowego publikatora 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="name" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Biznesowa nazwa publikatora 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="userId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Opcjonalny hash uzytkownika do upgrade'u. W przypadku nie wystepowania wystawiany jest pusty token 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="kycGw" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Hash KycGateway-a 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="clusterSize" type="xsd:int" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Maksymalny rozmiar klastra publikatora 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="limits" type="ns2:StorageLimits" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Definicja ilosc dokumentow ktore publikator bedzie mogl publikowac 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="tokenExpiration" type="xsd:long" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Okres waznosci tokena 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="AddPublisherOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__AddPublisher   Zapytanie sluzace do dodania nowego publikatora 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="AddPublisherStatusInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__AddPublisherStatus   Status zadania 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="AddPublisherStatusOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__AddPublisherStatus   Status zadania 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="token" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Token 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="publisherId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator publikatora 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="AddKycGwInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__AddKycGw   Zapytanie sluzace do dodania nowego KycGw 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="userId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Opcjonalny hash uzytkownika do upgrade'u. W przypadku nie wystepowania wystawiany jest pusty token 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="clusterSize" type="xsd:int" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Maksymalny rozmiar klastra KycGw 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="tokenExpiration" type="xsd:long" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Okres waznosci tokena 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="AddKycGwOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__AddKycGw   Zapytanie sluzace do dodania nowego KycGw 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="AddKycGwStatusInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__AddKycGwStatus   Status zadania 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="AddKycGwStatusOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__AddKycGwStatus   Status zadania 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="token" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Token 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="kycId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator kyc-a 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="AddObserverInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__AddObserver   Zapytanie sluzace do dodania nowego observera 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="userId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Opcjonalny hash uzytkownika do upgrade'u. W przypadku nie wystepowania wystawiany jest pusty token 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="clusterSize" type="xsd:int" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Maksymalny rozmiar klastra observera 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="tokenExpiration" type="xsd:long" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Okres waznosci tokena 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="AddObserverOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__AddObserver   Zapytanie sluzace do dodania nowego observera 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="AddObserverStatusInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__AddObserverStatus   Status zadania 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="AddObserverStatusOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__AddObserverStatus   Status zadania 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="token" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Token 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="observerId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator observera 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="ChangePublisherCertInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__ChangePublisherCert   Zmiana limitow lub nazwy publikatora 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="publisherId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator publikatora 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="name" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Biznesowa nazwa publikatora 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="limits" type="ns2:StorageLimits" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Definicja ilosc dokumentow ktore publikator bedzie mogl publikowac 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="blockedState" type="ns2:PublisherLimitsActiveState" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Definiuje czy uzytkownik jest aktywny lub zablokowany 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="clusterSize" type="xsd:int" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Maksymalny rozmiar klastra 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="ChangePublisherCertOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__ChangePublisherCert   Zmiana limitow lub nazwy publikatora 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="ChangePublisherCertStatusInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__ChangePublisherCertStatus   Status zadania 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="ChangePublisherCertStatusOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__ChangePublisherCertStatus   Status zadania 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetCertDetailsInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__GetCertDetails   Informacje o aktualnym certyfikacie 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="publisherId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator publikatora 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetCertDetailsOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetCertDetails   Informacje o aktualnym certyfikacie 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetCertDetailsStatusInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__GetCertDetailsStatus   Dodanie nowego publishera 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetCertDetailsStatusOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetCertDetailsStatus   Dodanie nowego publishera 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="name" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Biznesowa nazwa publikatora 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="limits" type="ns2:StorageLimits" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Definicja ilosc dokumentow ktore publikator bedzie mogl publikowac 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="clusterSize" type="xsd:int" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Maksymalny rozmiar klastra 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="blockedState" type="ns2:PublisherLimitsActiveState" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Definiuje czy uzytkownik jest aktywny lub zablokowany 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetAllPublishersOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetAllPublishers   Informacje o pulisherach znanych supervisorowi 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetAllPublishersStatusInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__GetAllPublishersStatus   Dodanie nowego publishera 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetAllPublishersStatusOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetAllPublishersStatus   Dodanie nowego publishera 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="publishers" type="ns2:PublisherFromSupervisor" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <documentation>
+                Lista informacji o publikatorach 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetPredefinedLimitsOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetPredefinedLimits   Informacje o dostepnych zestawach limitow dokumentowych 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="basket" type="ns2:DocumentLimitsBasketDescription" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <documentation>
+                Lista informacji o dostepnych basketach i ich limitach 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetDocLimitUsageInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__GetDocLimitUsage   Informacje o uzyciu limitow dokumentowych 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="publisherId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator publikatora 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetDocLimitUsageOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetDocLimitUsage   Informacje o uzyciu limitow dokumentowych 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetDocLimitUsageStatusInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__GetDocLimitUsageStatus   Informacje o uzyciu limitow dokumentowych 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetDocLimitUsageStatusOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetDocLimitUsageStatus   Informacje o uzyciu limitow dokumentowych 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="usage" type="ns2:DocumentLimitsUsageDescription" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                podsumowanie uzycia limitow dla tego publikatora 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+  </schema>
+
+</types>
+
+<message name="Hello">
+</message>
+
+<message name="HelloResponse">
+  <part name="outParams" type="ns:HelloOutParams"/><!-- ns__Hello::outParams -->
+</message>
+
+<message name="AddPublisher">
+  <part name="inParamsAddPublisher" type="ns:AddPublisherInParams"/><!-- ns__AddPublisher::inParamsAddPublisher -->
+</message>
+
+<message name="AddPublisherResponse">
+  <part name="outParams" type="ns:AddPublisherOutParams"/><!-- ns__AddPublisher::outParams -->
+</message>
+
+<message name="AddPublisherStatus">
+  <part name="inParamsAddPublisherStatus" type="ns:AddPublisherStatusInParams"/><!-- ns__AddPublisherStatus::inParamsAddPublisherStatus -->
+</message>
+
+<message name="AddPublisherStatusResponse">
+  <part name="outParams" type="ns:AddPublisherStatusOutParams"/><!-- ns__AddPublisherStatus::outParams -->
+</message>
+
+<message name="AddKycGw">
+  <part name="inParamsAddKycGw" type="ns:AddKycGwInParams"/><!-- ns__AddKycGw::inParamsAddKycGw -->
+</message>
+
+<message name="AddKycGwResponse">
+  <part name="outParams" type="ns:AddKycGwOutParams"/><!-- ns__AddKycGw::outParams -->
+</message>
+
+<message name="AddKycGwStatus">
+  <part name="inParamsAddKycGwStatus" type="ns:AddKycGwStatusInParams"/><!-- ns__AddKycGwStatus::inParamsAddKycGwStatus -->
+</message>
+
+<message name="AddKycGwStatusResponse">
+  <part name="outParams" type="ns:AddKycGwStatusOutParams"/><!-- ns__AddKycGwStatus::outParams -->
+</message>
+
+<message name="AddObserver">
+  <part name="inParamsAddObserver" type="ns:AddObserverInParams"/><!-- ns__AddObserver::inParamsAddObserver -->
+</message>
+
+<message name="AddObserverResponse">
+  <part name="outParams" type="ns:AddObserverOutParams"/><!-- ns__AddObserver::outParams -->
+</message>
+
+<message name="AddObserverStatus">
+  <part name="inParamsAddObserverStatus" type="ns:AddObserverStatusInParams"/><!-- ns__AddObserverStatus::inParamsAddObserverStatus -->
+</message>
+
+<message name="AddObserverStatusResponse">
+  <part name="outParams" type="ns:AddObserverStatusOutParams"/><!-- ns__AddObserverStatus::outParams -->
+</message>
+
+<message name="ChangePublisherCert">
+  <part name="inParamsChangePublisherCert" type="ns:ChangePublisherCertInParams"/><!-- ns__ChangePublisherCert::inParamsChangePublisherCert -->
+</message>
+
+<message name="ChangePublisherCertResponse">
+  <part name="outParams" type="ns:ChangePublisherCertOutParams"/><!-- ns__ChangePublisherCert::outParams -->
+</message>
+
+<message name="ChangePublisherCertStatus">
+  <part name="inParamsChangePublisherCertStatus" type="ns:ChangePublisherCertStatusInParams"/><!-- ns__ChangePublisherCertStatus::inParamsChangePublisherCertStatus -->
+</message>
+
+<message name="ChangePublisherCertStatusResponse">
+  <part name="outParams" type="ns:ChangePublisherCertStatusOutParams"/><!-- ns__ChangePublisherCertStatus::outParams -->
+</message>
+
+<message name="GetCertDetails">
+  <part name="inParamsGetCertDetails" type="ns:GetCertDetailsInParams"/><!-- ns__GetCertDetails::inParamsGetCertDetails -->
+</message>
+
+<message name="GetCertDetailsResponse">
+  <part name="outParams" type="ns:GetCertDetailsOutParams"/><!-- ns__GetCertDetails::outParams -->
+</message>
+
+<message name="GetCertDetailsStatus">
+  <part name="inParamsGetCertDetailsStatus" type="ns:GetCertDetailsStatusInParams"/><!-- ns__GetCertDetailsStatus::inParamsGetCertDetailsStatus -->
+</message>
+
+<message name="GetCertDetailsStatusResponse">
+  <part name="outParams" type="ns:GetCertDetailsStatusOutParams"/><!-- ns__GetCertDetailsStatus::outParams -->
+</message>
+
+<message name="GetAllPublishers">
+</message>
+
+<message name="GetAllPublishersResponse">
+  <part name="outParams" type="ns:GetAllPublishersOutParams"/><!-- ns__GetAllPublishers::outParams -->
+</message>
+
+<message name="GetAllPublishersStatus">
+  <part name="inParamsGetAllPublishersStatus" type="ns:GetAllPublishersStatusInParams"/><!-- ns__GetAllPublishersStatus::inParamsGetAllPublishersStatus -->
+</message>
+
+<message name="GetAllPublishersStatusResponse">
+  <part name="outParams" type="ns:GetAllPublishersStatusOutParams"/><!-- ns__GetAllPublishersStatus::outParams -->
+</message>
+
+<message name="GetPredefinedLimits">
+</message>
+
+<message name="GetPredefinedLimitsResponse">
+  <part name="outParams" type="ns:GetPredefinedLimitsOutParams"/><!-- ns__GetPredefinedLimits::outParams -->
+</message>
+
+<message name="GetDocLimitUsage">
+  <part name="inParamsGetDocLimitUsage" type="ns:GetDocLimitUsageInParams"/><!-- ns__GetDocLimitUsage::inParamsGetDocLimitUsage -->
+</message>
+
+<message name="GetDocLimitUsageResponse">
+  <part name="outParams" type="ns:GetDocLimitUsageOutParams"/><!-- ns__GetDocLimitUsage::outParams -->
+</message>
+
+<message name="GetDocLimitUsageStatus">
+  <part name="inParamsGetDocLimitUsageStatus" type="ns:GetDocLimitUsageStatusInParams"/><!-- ns__GetDocLimitUsageStatus::inParamsGetDocLimitUsageStatus -->
+</message>
+
+<message name="GetDocLimitUsageStatusResponse">
+  <part name="outParams" type="ns:GetDocLimitUsageStatusOutParams"/><!-- ns__GetDocLimitUsageStatus::outParams -->
+</message>
+
+<portType name="SupervisorInterfaceServicePortType">
+  <operation name="Hello">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:Hello"/>
+    <output message="tns:HelloResponse"/>
+  </operation>
+  <operation name="AddPublisher">
+    <documentation>
+      Zapytanie sluzace do dodania nowego publikatora 
+    </documentation>
+    <input message="tns:AddPublisher"/>
+    <output message="tns:AddPublisherResponse"/>
+  </operation>
+  <operation name="AddPublisherStatus">
+    <documentation>
+      Status zadania 
+    </documentation>
+    <input message="tns:AddPublisherStatus"/>
+    <output message="tns:AddPublisherStatusResponse"/>
+  </operation>
+  <operation name="AddKycGw">
+    <documentation>
+      Zapytanie sluzace do dodania nowego KycGw 
+    </documentation>
+    <input message="tns:AddKycGw"/>
+    <output message="tns:AddKycGwResponse"/>
+  </operation>
+  <operation name="AddKycGwStatus">
+    <documentation>
+      Status zadania 
+    </documentation>
+    <input message="tns:AddKycGwStatus"/>
+    <output message="tns:AddKycGwStatusResponse"/>
+  </operation>
+  <operation name="AddObserver">
+    <documentation>
+      Zapytanie sluzace do dodania nowego observera 
+    </documentation>
+    <input message="tns:AddObserver"/>
+    <output message="tns:AddObserverResponse"/>
+  </operation>
+  <operation name="AddObserverStatus">
+    <documentation>
+      Status zadania 
+    </documentation>
+    <input message="tns:AddObserverStatus"/>
+    <output message="tns:AddObserverStatusResponse"/>
+  </operation>
+  <operation name="ChangePublisherCert">
+    <documentation>
+      Zmiana limitow lub nazwy publikatora 
+    </documentation>
+    <input message="tns:ChangePublisherCert"/>
+    <output message="tns:ChangePublisherCertResponse"/>
+  </operation>
+  <operation name="ChangePublisherCertStatus">
+    <documentation>
+      Status zadania 
+    </documentation>
+    <input message="tns:ChangePublisherCertStatus"/>
+    <output message="tns:ChangePublisherCertStatusResponse"/>
+  </operation>
+  <operation name="GetCertDetails">
+    <documentation>
+      Informacje o aktualnym certyfikacie 
+    </documentation>
+    <input message="tns:GetCertDetails"/>
+    <output message="tns:GetCertDetailsResponse"/>
+  </operation>
+  <operation name="GetCertDetailsStatus">
+    <documentation>
+      Dodanie nowego publishera 
+    </documentation>
+    <input message="tns:GetCertDetailsStatus"/>
+    <output message="tns:GetCertDetailsStatusResponse"/>
+  </operation>
+  <operation name="GetAllPublishers">
+    <documentation>
+      Informacje o pulisherach znanych supervisorowi 
+    </documentation>
+    <input message="tns:GetAllPublishers"/>
+    <output message="tns:GetAllPublishersResponse"/>
+  </operation>
+  <operation name="GetAllPublishersStatus">
+    <documentation>
+      Dodanie nowego publishera 
+    </documentation>
+    <input message="tns:GetAllPublishersStatus"/>
+    <output message="tns:GetAllPublishersStatusResponse"/>
+  </operation>
+  <operation name="GetPredefinedLimits">
+    <documentation>
+      Informacje o dostepnych zestawach limitow dokumentowych 
+    </documentation>
+    <input message="tns:GetPredefinedLimits"/>
+    <output message="tns:GetPredefinedLimitsResponse"/>
+  </operation>
+  <operation name="GetDocLimitUsage">
+    <documentation>
+      Informacje o uzyciu limitow dokumentowych 
+    </documentation>
+    <input message="tns:GetDocLimitUsage"/>
+    <output message="tns:GetDocLimitUsageResponse"/>
+  </operation>
+  <operation name="GetDocLimitUsageStatus">
+    <documentation>
+      Informacje o uzyciu limitow dokumentowych 
+    </documentation>
+    <input message="tns:GetDocLimitUsageStatus"/>
+    <output message="tns:GetDocLimitUsageStatusResponse"/>
+  </operation>
+</portType>
+
+<binding name="SupervisorInterfacePortBinding" type="tns:SupervisorInterfaceServicePortType">
+  <SOAP:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+  <operation name="Hello">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://SupervisorInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://SupervisorInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="AddPublisher">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://SupervisorInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://SupervisorInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="AddPublisherStatus">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://SupervisorInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://SupervisorInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="AddKycGw">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://SupervisorInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://SupervisorInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="AddKycGwStatus">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://SupervisorInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://SupervisorInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="AddObserver">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://SupervisorInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://SupervisorInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="AddObserverStatus">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://SupervisorInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://SupervisorInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="ChangePublisherCert">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://SupervisorInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://SupervisorInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="ChangePublisherCertStatus">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://SupervisorInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://SupervisorInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetCertDetails">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://SupervisorInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://SupervisorInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetCertDetailsStatus">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://SupervisorInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://SupervisorInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetAllPublishers">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://SupervisorInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://SupervisorInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetAllPublishersStatus">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://SupervisorInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://SupervisorInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetPredefinedLimits">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://SupervisorInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://SupervisorInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetDocLimitUsage">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://SupervisorInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://SupervisorInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetDocLimitUsageStatus">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://SupervisorInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://SupervisorInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+</binding>
+
+<service name="SupervisorInterfaceService">
+  <documentation>gSOAP 2.8.95 generated service definition</documentation>
+  <port name="SupervisorInterfaceService" binding="tns:SupervisorInterfacePortBinding">
+    <SOAP:address location="REPLACE_WITH_ACTUAL_URL"/>
+  </port>
+</service>
+
+</definitions>

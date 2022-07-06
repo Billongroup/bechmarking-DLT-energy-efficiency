@@ -1,0 +1,3075 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="DMPtoCKKDurableMediaInterfaceService"
+  targetNamespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"
+  xmlns:tns="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"
+  xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:ns2="https://Types.dm.billongroup.com/"
+  xmlns:ns="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"
+  xmlns:SOAP="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:HTTP="http://schemas.xmlsoap.org/wsdl/http/"
+  xmlns:MIME="http://schemas.xmlsoap.org/wsdl/mime/"
+  xmlns:DIME="http://schemas.xmlsoap.org/ws/2002/04/dime/wsdl/"
+  xmlns:WSDL="http://schemas.xmlsoap.org/wsdl/"
+  xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+<types>
+
+  <schema targetNamespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"
+    xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:ns2="https://Types.dm.billongroup.com/"
+    xmlns:ns="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"
+    xmlns="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="unqualified"
+    attributeFormDefault="unqualified">
+    <import namespace="https://Types.dm.billongroup.com/" schemaLocation="ns2.xsd"/>
+    <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+    <complexType name="SetupOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__Setup   Inicjalizacja wezla publikatora. 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="cummulativeNoOfPublishedDocuments" type="xsd:long" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Calkowita ilosc opublikowanych dokumentow. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="ForgetDocumentInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__ForgetDocument   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="documentBlockchainAddress" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                [base58] Adres opublikowanego dokumentu. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="ForgetDocumentOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__ForgetDocument   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="ForgetDocumentJobStatusInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__ForgetDocumentJobStatus   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="ForgetDocumentJobStatusOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__ForgetDocumentJobStatus   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="PublishPrivateDocumentInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__PublishPrivateDocument   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="publisherCif" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Cif publikatora. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="publicationMode" type="ns2:PublicationMode" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Typ publikacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="agreementPublicationMode" type="ns2:AgreementPublicationMode" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Typ publikacji dla zdalnego podpisu 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="documentData" type="ns2:BLOCKCHAINDocumentData" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Dane dokumentu do publikacji. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="authorizedUsersList" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <documentation>
+                Lista nazw uzytkownikow uprawnionych do odczytu tego dokumentu poza publikatorem i odbiorca. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="sendAuthorizationCodes" type="xsd:boolean" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Dla true publikacja z light reader'em. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="PublishPrivateDocumentOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__PublishPrivateDocument   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="PublishPublicDocumentInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__PublishPublicDocument   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="publicationMode" type="ns2:PublicationMode" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Typ publikacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="documentData" type="ns2:BLOCKCHAINDocumentData" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Dane dokumentu do publikacji. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="PublishPublicDocumentOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__PublishPublicDocument   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetPublishStatusInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__GetPublishStatus   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetPublishStatusOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetPublishStatus   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="documentBlockchainAddress" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                [base58] Adres opublikowanego dokumentu. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="BLOCKCHAINpublicationDate" type="xsd:long" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                [mikrosekundy od epoki unix] Data opublikowania dokumentu. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="BLOCKCHAINestimMinPropagationTime" type="xsd:long" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Data potwierdzenia w blockchain. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetDocumentInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__GetDocument   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="documentBlockchainAddress" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                [base58] Adres opublikowanego dokumentu. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="documentType" type="ns2:DocumentType" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Typ dokumentu. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetDocumentOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetDocument   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="documentInfo" type="ns2:BLOCKCHAINDocumentInfo" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Dokument zawiera wszystkie dane dokumentu. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetPrivateDocumentDecryptedPublisherCEKInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__GetPrivateDocumentDecryptedPublisherCEK   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="documentBlockchainAddress" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                [base58] Adres opublikowanego dokumentu. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetPrivateDocumentDecryptedPublisherCEKOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetPrivateDocumentDecryptedPublisherCEK   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="decryptedPublisherCEK" type="xsd:base64Binary" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Zdeszyfrowany CEK publikatora uzyty do zaszyfrowania danego dokumentu. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetPrivateDocumentAuthorizationCodeInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__GetPrivateDocumentAuthorizationCode   Zapytanie sluzace do pobrania kodow autoryzacyjnych. 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="documentBlockchainAddress" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                [base58] Adres opublikowanego dokumentu. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetPrivateDocumentAuthorizationCodeOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetPrivateDocumentAuthorizationCode   Zapytanie sluzace do pobrania kodow autoryzacyjnych. 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetPrivateDocumentAuthorizationCodeStatusInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__GetPrivateDocumentAuthorizationCodeStatus   Zapytanie sluzace do odpytania o status pobrania kodow autoryzacyjnych. 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetPrivateDocumentAuthorizationCodeStatusOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetPrivateDocumentAuthorizationCodeStatus   Zapytanie sluzace do odpytania o status pobrania kodow autoryzacyjnych. 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="authorizationCodePartShort" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Pierwsza, krotsza czesc kodu autoryzacyjnego. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="authorizationCodePartLong" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Druga, dluzsza czesc kodu autoryzacyjnego. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetAllPublishersOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetAllPublishers   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="publishersList" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <documentation>
+                Lista identyfikatorow wszystkich publikatorow w systemie. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetThisPublisherAllDocumentsMetadataOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetThisPublisherAllDocumentsMetadata   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="publishersDocuments" type="ns2:BLOCKCHAINDocumentSynchronizationMetadata" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <documentation>
+                Lista wszystkich dokumentow publicznych publikatora. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetSystemCategoriesOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetSystemCategories   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="categories" type="ns2:DocumentCategory" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <documentation>
+                Lista wezlow drzewa kategorii 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetThisPublisherCategoriesOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetThisPublisherCategories   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetThisPublisherCategoriesStatusInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__GetThisPublisherCategoriesStatus   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetThisPublisherCategoriesStatusOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetThisPublisherCategoriesStatus   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="categories" type="ns2:DocumentCategory" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <documentation>
+                Lista wezlow drzewa kategorii 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="SetThisPublisherCategoriesInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__SetThisPublisherCategories   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="categories" type="ns2:DocumentCategory" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <documentation>
+                Lista wezlow drzewa kategorii 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="SetThisPublisherCategoriesOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__SetThisPublisherCategories   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="SetThisPublisherCategoriesStatusInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__SetThisPublisherCategoriesStatus   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="SetThisPublisherCategoriesStatusOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__SetThisPublisherCategoriesStatus   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="categories" type="ns2:DocumentCategory" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <documentation>
+                Lista wezlow drzewa kategorii 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="HelloOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__Hello   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="publisherId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator publikatora 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="machineId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator maszyny. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="userId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator uzytkownika. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="kycGwId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator KycGwId. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="nodeStatus" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status serwera. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="pid" type="xsd:int" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator procesu. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="userName" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Nazwa uzytkownika. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="miPort" type="xsd:int" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Port serwera VUI. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="soapPort" type="xsd:int" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Port servera SOAP. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="sslRequired" type="xsd:boolean" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Wartosc "true", jezeli serwer wymaga protokol SSL. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="version" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Informacje o wersji serwera. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="engineVersion" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Informacje o wersji silnika wykorzystywanego w serwerze. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="apiVersion" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Informacje o wersji API. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="colonyId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator kolonii. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetPublisherDocumentsMetadataInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__GetPublisherDocumentsMetadata   Pobiera liste dokumentow opublikowanych przez danego publikatora. 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="publisherId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator publikatora 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="documentType" type="ns2:DocumentType" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Typ dokumentu. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="creationDate" type="ns2:DateLongRange" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Zakres dat, dla ktorych chcemy pobrac liste dokumentow. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetPublisherDocumentsMetadataOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetPublisherDocumentsMetadata   Pobiera liste dokumentow opublikowanych przez danego publikatora. 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetPublisherDocumentsMetadataStatusInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__GetPublisherDocumentsMetadataStatus   Status pobierania listy dokumentow opublikowanych przez danego publikatora. 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetPublisherDocumentsMetadataStatusOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetPublisherDocumentsMetadataStatus   Status pobierania listy dokumentow opublikowanych przez danego publikatora. 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="publishersDocuments" type="ns2:BLOCKCHAINDocumentSynchronizationMetadata" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <documentation>
+                Lista dokumentow danego publikatora 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetThisPublisherDecryptedDocumentIndexInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__GetThisPublisherDecryptedDocumentIndex   Pobiera liste adresow dokumentow prywatnych opublikowanych dla tego publikatora 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="creationDate" type="ns2:DateLongRange" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Zakres dat, dla ktorych chcemy pobrac adresy dokumentow prywatnych 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="taskId" type="xsd:long" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator tasku dla tego zapytania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetThisPublisherDecryptedDocumentIndexOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetThisPublisherDecryptedDocumentIndex   Pobiera liste adresow dokumentow prywatnych opublikowanych dla tego publikatora 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="indexEntriesList" type="ns2:DecryptedIndexEntry" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <documentation>
+                Lista wpisow odszyfrowanych indeksow dokumentow. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="taskId" type="xsd:long" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator tasku dla tego zapytania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="IssueMaintenanceTokenInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__IssueMaintenanceToken   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="publisherId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator publikatora 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="tokenExpiration" type="xsd:long" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Okres waznosci tokena. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="IssueMaintenanceTokenOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__IssueMaintenanceToken   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="token" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Token dla MaintenanceNode'a do podlaczenia sie do publikatora. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="publisherId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator publikatora 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="tokenExpiration" type="xsd:long" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Termin przydatnosci tokena (time point). 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="IssueMemberTokenInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__IssueMemberToken   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="userId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Opcjonalny hash uzytkownika do upgradu. Jesli nie ma, wystawimy token in blanco 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="tokenExpiration" type="xsd:long" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Okres waznosci tokena (duration). 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="IssueMemberTokenOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__IssueMemberToken   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="token" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Token dla Publisher Membera do podlaczenia sie do grupy publikatora. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="publisherId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator publikatora 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="tokenExpiration" type="xsd:long" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Termin przydatnosci tokena (time point). 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="ClusterInfoOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__ClusterInfo   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="ClusterInfoStatusInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__ClusterInfoStatus   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="ClusterInfoStatusOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__ClusterInfoStatus   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="members" type="ns2:ClusterMemberInfo" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <documentation>
+                lista czlonkow klastra 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="ChangeIdentityInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__ChangeIdentity   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="currentIdentityData" type="ns2:IdentityData" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Poprzednie dane identyfikujace odbiorce dokumentu. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="newIdentityData" type="ns2:IdentityData" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Nowe dane identyfikujace odbiorce dokumentu. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="ChangeIdentityOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__ChangeIdentity   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="ChangeIdentityStatusInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__ChangeIdentityStatus   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="ChangeIdentityStatusOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__ChangeIdentityStatus   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="CheckIdentityInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__CheckIdentity   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="publisherCif" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Unikatowy identyfikator odbiorcy w systemie Publikatora. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="CheckIdentityOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__CheckIdentity   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="jobId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="CheckIdentityStatusInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__CheckIdentityStatus   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="CheckIdentityStatusOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__CheckIdentityStatus   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="uuid" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Adres blockchainowy pelnej tozsamosci. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="certValidFrom" type="xsd:long" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Od kiedy certyfikat tozsamosci jest wazny. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="AddSemiFullIdentityInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__AddSemiFullIdentity   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="identity" type="ns2:IdentityData" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Dane identyfikujace odbiorce dokumentu. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="AddSemiFullIdentityOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__AddSemiFullIdentity   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="jobId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="AddSemiFullIdentityStatusInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__AddSemiFullIdentityStatus   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="AddSemiFullIdentityStatusOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__AddSemiFullIdentityStatus   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="RemoveIdentityInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__RemoveIdentity   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="publisherCif" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Cif publikatora. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="identity" type="ns2:IdentityData" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Dane identyfikujace odbiorce dokumentu. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="RemoveIdentityOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__RemoveIdentity   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="jobId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="RemoveIdentityStatusInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__RemoveIdentityStatus   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="RemoveIdentityStatusOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__RemoveIdentityStatus   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetRemoteSignatureDocumentsOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetRemoteSignatureDocuments   Status dokumentow do zdalnego podpisu 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="documents" type="ns2:RemoteSignatureDocumentDescription" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <documentation>
+                Status obserwowanych dokumentow 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetRemoteSignatureDocumentInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__GetRemoteSignatureDocument   Dane dokumentu czesciowo podpisanego 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="id" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator dokumentu 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetRemoteSignatureDocumentOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetRemoteSignatureDocument   Dane dokumentu czesciowo podpisanego 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="documentData" type="ns2:RemoteSignatureDocumentWithExtraInfo" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Dane podpisanego dokumentu 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="CreateFolderOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__CreateFolder   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="jobId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="CreateFolderStatusInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__CreateFolderStatus   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="CreateFolderStatusOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__CreateFolderStatus   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="folderId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator folderu 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="AddDocumentToFolderInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__AddDocumentToFolder   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="documentBlockchainAddress" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator dokumentu 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="folderId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator folderu 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="AddDocumentToFolderOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__AddDocumentToFolder   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="jobId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="AddDocumentToFolderStatusInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__AddDocumentToFolderStatus   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="AddDocumentToFolderStatusOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__AddDocumentToFolderStatus   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetThisPublisherDecryptedEventInboxInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__GetThisPublisherDecryptedEventInbox   Inicjuje pobieranie listy eventow dokumentowych dla tego publikatora 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="creationDate" type="ns2:DateLongRange" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Zakres dat, dla ktorych chcemy pobrac eventy 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetThisPublisherDecryptedEventInboxOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetThisPublisherDecryptedEventInbox   Inicjuje pobieranie listy eventow dokumentowych dla tego publikatora 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetThisPublisherDecryptedEventInboxStatusInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__GetThisPublisherDecryptedEventInboxStatus   Pobiera status transakcji pobrania listy eventow dokumentowych tego publikatora 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetThisPublisherDecryptedEventInboxStatusOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetThisPublisherDecryptedEventInboxStatus   Pobiera status transakcji pobrania listy eventow dokumentowych tego publikatora 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="indexEntriesList" type="ns2:DecryptedPublisherInboxEventEntry" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <documentation>
+                Lista wpisow odszyfrowanych indeksow dokumentow 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="AddEventToThisPublisherEventInboxInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__AddEventToThisPublisherEventInbox   Dodaje zdarzenie do skrzynki odbiorczej publikatora 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="documentBlockchainAddress" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                [base58] Adres opublikowanego dokumentu. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="eventSystemCategory" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Zagniezdzona kategoria eventu 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="creationDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Data stworzenia dokumentu 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="retentionDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Data zakonczenia przechowywania dokumentu 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="AddEventToThisPublisherEventInboxOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__AddEventToThisPublisherEventInbox   Dodaje zdarzenie do skrzynki odbiorczej publikatora 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="AddEventToThisPublisherEventInboxStatusInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__AddEventToThisPublisherEventInboxStatus   Pobiera status dodania zdarzenia do skrzynki odbiorczej publikatora 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="AddEventToThisPublisherEventInboxStatusOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__AddEventToThisPublisherEventInboxStatus   Pobiera status dodania zdarzenia do skrzynki odbiorczej publikatora 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetObserverRequestedDocumentListInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__GetObserverRequestedDocumentList   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="lastStatusUpdateFrom" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Minimalny czas zmiany statusu zadania. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="lastStatusUpdateTo" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Maksymalny czas zmiany statusu zadania. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="status" type="ns2:ObserverRequestDocumentStatus" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Z jakim statusem interesuja nas zapytania. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="observerId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Od ktorego obserwatora interesuja nas zapytania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetObserverRequestedDocumentListOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetObserverRequestedDocumentList   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetObserverRequestedDocumentListStatusInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__GetObserverRequestedDocumentListStatus   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator zadania. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetObserverRequestedDocumentListStatusOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetObserverRequestedDocumentListStatus   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="documents" type="ns2:ObserverRequestedDocumentDescription" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <documentation>
+                Opis stanu dokumentow, o ktorych dostep zostal poproszony. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="SendObserverRequestDecisionInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__SendObserverRequestDecision   TBD 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="requestJobId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Id requestu, dla ktorego wydawana jest decyzja. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="accessApproved" type="xsd:boolean" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Czy dostep do dokumentu zostal zatwierdzony. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="accessDenialJustification" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Uzasadnienie dlaczego dostep do dokumentu nie zostal zatwierdzony. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="SendObserverRequestDecisionOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__SendObserverRequestDecision   TBD-700 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+  </schema>
+
+</types>
+
+<message name="Setup">
+</message>
+
+<message name="SetupResponse">
+  <part name="outParams" type="ns:SetupOutParams"/><!-- ns__Setup::outParams -->
+</message>
+
+<message name="ForgetDocument">
+  <part name="inParamsForgetDocument" type="ns:ForgetDocumentInParams"/><!-- ns__ForgetDocument::inParamsForgetDocument -->
+</message>
+
+<message name="ForgetDocumentResponse">
+  <part name="outParams" type="ns:ForgetDocumentOutParams"/><!-- ns__ForgetDocument::outParams -->
+</message>
+
+<message name="ForgetDocumentJobStatus">
+  <part name="inParamsForgetDocumentJobStatus" type="ns:ForgetDocumentJobStatusInParams"/><!-- ns__ForgetDocumentJobStatus::inParamsForgetDocumentJobStatus -->
+</message>
+
+<message name="ForgetDocumentJobStatusResponse">
+  <part name="outParams" type="ns:ForgetDocumentJobStatusOutParams"/><!-- ns__ForgetDocumentJobStatus::outParams -->
+</message>
+
+<message name="PublishPrivateDocument">
+  <part name="inParamsPublishPrivateDocument" type="ns:PublishPrivateDocumentInParams"/><!-- ns__PublishPrivateDocument::inParamsPublishPrivateDocument -->
+</message>
+
+<message name="PublishPrivateDocumentResponse">
+  <part name="outParams" type="ns:PublishPrivateDocumentOutParams"/><!-- ns__PublishPrivateDocument::outParams -->
+</message>
+
+<message name="PublishPublicDocument">
+  <part name="inParamsPublishPublicDocument" type="ns:PublishPublicDocumentInParams"/><!-- ns__PublishPublicDocument::inParamsPublishPublicDocument -->
+</message>
+
+<message name="PublishPublicDocumentResponse">
+  <part name="outParams" type="ns:PublishPublicDocumentOutParams"/><!-- ns__PublishPublicDocument::outParams -->
+</message>
+
+<message name="GetPublishStatus">
+  <part name="inParamsGetPublishStatus" type="ns:GetPublishStatusInParams"/><!-- ns__GetPublishStatus::inParamsGetPublishStatus -->
+</message>
+
+<message name="GetPublishStatusResponse">
+  <part name="outParams" type="ns:GetPublishStatusOutParams"/><!-- ns__GetPublishStatus::outParams -->
+</message>
+
+<message name="GetDocument">
+  <part name="inParamsGetDocument" type="ns:GetDocumentInParams"/><!-- ns__GetDocument::inParamsGetDocument -->
+</message>
+
+<message name="GetDocumentResponse">
+  <part name="outParams" type="ns:GetDocumentOutParams"/><!-- ns__GetDocument::outParams -->
+</message>
+
+<message name="GetPrivateDocumentDecryptedPublisherCEK">
+  <part name="inParamsGetPrivateDocumentDecryptedPublisherCEK" type="ns:GetPrivateDocumentDecryptedPublisherCEKInParams"/><!-- ns__GetPrivateDocumentDecryptedPublisherCEK::inParamsGetPrivateDocumentDecryptedPublisherCEK -->
+</message>
+
+<message name="GetPrivateDocumentDecryptedPublisherCEKResponse">
+  <part name="outParams" type="ns:GetPrivateDocumentDecryptedPublisherCEKOutParams"/><!-- ns__GetPrivateDocumentDecryptedPublisherCEK::outParams -->
+</message>
+
+<message name="GetPrivateDocumentAuthorizationCode">
+  <part name="inParamsGetPrivateDocumentAuthorizationCode" type="ns:GetPrivateDocumentAuthorizationCodeInParams"/><!-- ns__GetPrivateDocumentAuthorizationCode::inParamsGetPrivateDocumentAuthorizationCode -->
+</message>
+
+<message name="GetPrivateDocumentAuthorizationCodeResponse">
+  <part name="outParams" type="ns:GetPrivateDocumentAuthorizationCodeOutParams"/><!-- ns__GetPrivateDocumentAuthorizationCode::outParams -->
+</message>
+
+<message name="GetPrivateDocumentAuthorizationCodeStatus">
+  <part name="inParamsGetPrivateDocumentAuthorizationCodeStatus" type="ns:GetPrivateDocumentAuthorizationCodeStatusInParams"/><!-- ns__GetPrivateDocumentAuthorizationCodeStatus::inParamsGetPrivateDocumentAuthorizationCodeStatus -->
+</message>
+
+<message name="GetPrivateDocumentAuthorizationCodeStatusResponse">
+  <part name="outParams" type="ns:GetPrivateDocumentAuthorizationCodeStatusOutParams"/><!-- ns__GetPrivateDocumentAuthorizationCodeStatus::outParams -->
+</message>
+
+<message name="GetAllPublishers">
+</message>
+
+<message name="GetAllPublishersResponse">
+  <part name="outParams" type="ns:GetAllPublishersOutParams"/><!-- ns__GetAllPublishers::outParams -->
+</message>
+
+<message name="GetThisPublisherAllDocumentsMetadata">
+</message>
+
+<message name="GetThisPublisherAllDocumentsMetadataResponse">
+  <part name="outParams" type="ns:GetThisPublisherAllDocumentsMetadataOutParams"/><!-- ns__GetThisPublisherAllDocumentsMetadata::outParams -->
+</message>
+
+<message name="GetSystemCategories">
+</message>
+
+<message name="GetSystemCategoriesResponse">
+  <part name="outParams" type="ns:GetSystemCategoriesOutParams"/><!-- ns__GetSystemCategories::outParams -->
+</message>
+
+<message name="GetThisPublisherCategories">
+</message>
+
+<message name="GetThisPublisherCategoriesResponse">
+  <part name="outParams" type="ns:GetThisPublisherCategoriesOutParams"/><!-- ns__GetThisPublisherCategories::outParams -->
+</message>
+
+<message name="GetThisPublisherCategoriesStatus">
+  <part name="inParamsGetThisPublisherCategoriesStatus" type="ns:GetThisPublisherCategoriesStatusInParams"/><!-- ns__GetThisPublisherCategoriesStatus::inParamsGetThisPublisherCategoriesStatus -->
+</message>
+
+<message name="GetThisPublisherCategoriesStatusResponse">
+  <part name="outParams" type="ns:GetThisPublisherCategoriesStatusOutParams"/><!-- ns__GetThisPublisherCategoriesStatus::outParams -->
+</message>
+
+<message name="SetThisPublisherCategories">
+  <part name="inParamsSetThisPublisherCategories" type="ns:SetThisPublisherCategoriesInParams"/><!-- ns__SetThisPublisherCategories::inParamsSetThisPublisherCategories -->
+</message>
+
+<message name="SetThisPublisherCategoriesResponse">
+  <part name="outParams" type="ns:SetThisPublisherCategoriesOutParams"/><!-- ns__SetThisPublisherCategories::outParams -->
+</message>
+
+<message name="SetThisPublisherCategoriesStatus">
+  <part name="inParamsSetThisPublisherCategoriesStatus" type="ns:SetThisPublisherCategoriesStatusInParams"/><!-- ns__SetThisPublisherCategoriesStatus::inParamsSetThisPublisherCategoriesStatus -->
+</message>
+
+<message name="SetThisPublisherCategoriesStatusResponse">
+  <part name="outParams" type="ns:SetThisPublisherCategoriesStatusOutParams"/><!-- ns__SetThisPublisherCategoriesStatus::outParams -->
+</message>
+
+<message name="Hello">
+</message>
+
+<message name="HelloResponse">
+  <part name="outParams" type="ns:HelloOutParams"/><!-- ns__Hello::outParams -->
+</message>
+
+<message name="GetPublisherDocumentsMetadata">
+  <part name="inParamsGetPublisherDocumentsMetadata" type="ns:GetPublisherDocumentsMetadataInParams"/><!-- ns__GetPublisherDocumentsMetadata::inParamsGetPublisherDocumentsMetadata -->
+</message>
+
+<message name="GetPublisherDocumentsMetadataResponse">
+  <part name="outParams" type="ns:GetPublisherDocumentsMetadataOutParams"/><!-- ns__GetPublisherDocumentsMetadata::outParams -->
+</message>
+
+<message name="GetPublisherDocumentsMetadataStatus">
+  <part name="inParamsGetPublisherDocumentsMetadataStatus" type="ns:GetPublisherDocumentsMetadataStatusInParams"/><!-- ns__GetPublisherDocumentsMetadataStatus::inParamsGetPublisherDocumentsMetadataStatus -->
+</message>
+
+<message name="GetPublisherDocumentsMetadataStatusResponse">
+  <part name="outParams" type="ns:GetPublisherDocumentsMetadataStatusOutParams"/><!-- ns__GetPublisherDocumentsMetadataStatus::outParams -->
+</message>
+
+<message name="GetThisPublisherDecryptedDocumentIndex">
+  <part name="inParamsGetThisPublisherDecryptedDocumentIndex" type="ns:GetThisPublisherDecryptedDocumentIndexInParams"/><!-- ns__GetThisPublisherDecryptedDocumentIndex::inParamsGetThisPublisherDecryptedDocumentIndex -->
+</message>
+
+<message name="GetThisPublisherDecryptedDocumentIndexResponse">
+  <part name="outParams" type="ns:GetThisPublisherDecryptedDocumentIndexOutParams"/><!-- ns__GetThisPublisherDecryptedDocumentIndex::outParams -->
+</message>
+
+<message name="IssueMaintenanceToken">
+  <part name="inParamsIssueMaintenanceToken" type="ns:IssueMaintenanceTokenInParams"/><!-- ns__IssueMaintenanceToken::inParamsIssueMaintenanceToken -->
+</message>
+
+<message name="IssueMaintenanceTokenResponse">
+  <part name="outParams" type="ns:IssueMaintenanceTokenOutParams"/><!-- ns__IssueMaintenanceToken::outParams -->
+</message>
+
+<message name="IssueMemberToken">
+  <part name="inParamsIssueMemberToken" type="ns:IssueMemberTokenInParams"/><!-- ns__IssueMemberToken::inParamsIssueMemberToken -->
+</message>
+
+<message name="IssueMemberTokenResponse">
+  <part name="outParams" type="ns:IssueMemberTokenOutParams"/><!-- ns__IssueMemberToken::outParams -->
+</message>
+
+<message name="ClusterInfo">
+</message>
+
+<message name="ClusterInfoResponse">
+  <part name="outParams" type="ns:ClusterInfoOutParams"/><!-- ns__ClusterInfo::outParams -->
+</message>
+
+<message name="ClusterInfoStatus">
+  <part name="inParamsClusterInfoStatus" type="ns:ClusterInfoStatusInParams"/><!-- ns__ClusterInfoStatus::inParamsClusterInfoStatus -->
+</message>
+
+<message name="ClusterInfoStatusResponse">
+  <part name="outParams" type="ns:ClusterInfoStatusOutParams"/><!-- ns__ClusterInfoStatus::outParams -->
+</message>
+
+<message name="ChangeIdentity">
+  <part name="inParamsChangeIdentity" type="ns:ChangeIdentityInParams"/><!-- ns__ChangeIdentity::inParamsChangeIdentity -->
+</message>
+
+<message name="ChangeIdentityResponse">
+  <part name="outParams" type="ns:ChangeIdentityOutParams"/><!-- ns__ChangeIdentity::outParams -->
+</message>
+
+<message name="ChangeIdentityStatus">
+  <part name="inParamsChangeIdentityStatus" type="ns:ChangeIdentityStatusInParams"/><!-- ns__ChangeIdentityStatus::inParamsChangeIdentityStatus -->
+</message>
+
+<message name="ChangeIdentityStatusResponse">
+  <part name="outParams" type="ns:ChangeIdentityStatusOutParams"/><!-- ns__ChangeIdentityStatus::outParams -->
+</message>
+
+<message name="CheckIdentity">
+  <part name="inParamsCheckIdentity" type="ns:CheckIdentityInParams"/><!-- ns__CheckIdentity::inParamsCheckIdentity -->
+</message>
+
+<message name="CheckIdentityResponse">
+  <part name="outParams" type="ns:CheckIdentityOutParams"/><!-- ns__CheckIdentity::outParams -->
+</message>
+
+<message name="CheckIdentityStatus">
+  <part name="inParamsCheckIdentityStatus" type="ns:CheckIdentityStatusInParams"/><!-- ns__CheckIdentityStatus::inParamsCheckIdentityStatus -->
+</message>
+
+<message name="CheckIdentityStatusResponse">
+  <part name="outParams" type="ns:CheckIdentityStatusOutParams"/><!-- ns__CheckIdentityStatus::outParams -->
+</message>
+
+<message name="AddSemiFullIdentity">
+  <part name="inParamsAddSemiFullIdentity" type="ns:AddSemiFullIdentityInParams"/><!-- ns__AddSemiFullIdentity::inParamsAddSemiFullIdentity -->
+</message>
+
+<message name="AddSemiFullIdentityResponse">
+  <part name="outParams" type="ns:AddSemiFullIdentityOutParams"/><!-- ns__AddSemiFullIdentity::outParams -->
+</message>
+
+<message name="AddSemiFullIdentityStatus">
+  <part name="inParamsAddSemiFullIdentityStatus" type="ns:AddSemiFullIdentityStatusInParams"/><!-- ns__AddSemiFullIdentityStatus::inParamsAddSemiFullIdentityStatus -->
+</message>
+
+<message name="AddSemiFullIdentityStatusResponse">
+  <part name="outParams" type="ns:AddSemiFullIdentityStatusOutParams"/><!-- ns__AddSemiFullIdentityStatus::outParams -->
+</message>
+
+<message name="RemoveIdentity">
+  <part name="inParamsRemoveIdentity" type="ns:RemoveIdentityInParams"/><!-- ns__RemoveIdentity::inParamsRemoveIdentity -->
+</message>
+
+<message name="RemoveIdentityResponse">
+  <part name="outParams" type="ns:RemoveIdentityOutParams"/><!-- ns__RemoveIdentity::outParams -->
+</message>
+
+<message name="RemoveIdentityStatus">
+  <part name="inParamsRemoveIdentityStatus" type="ns:RemoveIdentityStatusInParams"/><!-- ns__RemoveIdentityStatus::inParamsRemoveIdentityStatus -->
+</message>
+
+<message name="RemoveIdentityStatusResponse">
+  <part name="outParams" type="ns:RemoveIdentityStatusOutParams"/><!-- ns__RemoveIdentityStatus::outParams -->
+</message>
+
+<message name="GetRemoteSignatureDocuments">
+</message>
+
+<message name="GetRemoteSignatureDocumentsResponse">
+  <part name="outParams" type="ns:GetRemoteSignatureDocumentsOutParams"/><!-- ns__GetRemoteSignatureDocuments::outParams -->
+</message>
+
+<message name="GetRemoteSignatureDocument">
+  <part name="inParamsGetRemoteSignatureDocument" type="ns:GetRemoteSignatureDocumentInParams"/><!-- ns__GetRemoteSignatureDocument::inParamsGetRemoteSignatureDocument -->
+</message>
+
+<message name="GetRemoteSignatureDocumentResponse">
+  <part name="outParams" type="ns:GetRemoteSignatureDocumentOutParams"/><!-- ns__GetRemoteSignatureDocument::outParams -->
+</message>
+
+<message name="CreateFolder">
+</message>
+
+<message name="CreateFolderResponse">
+  <part name="outParams" type="ns:CreateFolderOutParams"/><!-- ns__CreateFolder::outParams -->
+</message>
+
+<message name="CreateFolderStatus">
+  <part name="inParamsCreateFolderStatus" type="ns:CreateFolderStatusInParams"/><!-- ns__CreateFolderStatus::inParamsCreateFolderStatus -->
+</message>
+
+<message name="CreateFolderStatusResponse">
+  <part name="outParams" type="ns:CreateFolderStatusOutParams"/><!-- ns__CreateFolderStatus::outParams -->
+</message>
+
+<message name="AddDocumentToFolder">
+  <part name="inParamsAddDocumentToFolder" type="ns:AddDocumentToFolderInParams"/><!-- ns__AddDocumentToFolder::inParamsAddDocumentToFolder -->
+</message>
+
+<message name="AddDocumentToFolderResponse">
+  <part name="outParams" type="ns:AddDocumentToFolderOutParams"/><!-- ns__AddDocumentToFolder::outParams -->
+</message>
+
+<message name="AddDocumentToFolderStatus">
+  <part name="inParamsAddDocumentToFolderStatus" type="ns:AddDocumentToFolderStatusInParams"/><!-- ns__AddDocumentToFolderStatus::inParamsAddDocumentToFolderStatus -->
+</message>
+
+<message name="AddDocumentToFolderStatusResponse">
+  <part name="outParams" type="ns:AddDocumentToFolderStatusOutParams"/><!-- ns__AddDocumentToFolderStatus::outParams -->
+</message>
+
+<message name="GetThisPublisherDecryptedEventInbox">
+  <part name="inParamsGetThisPublisherDecryptedEventInbox" type="ns:GetThisPublisherDecryptedEventInboxInParams"/><!-- ns__GetThisPublisherDecryptedEventInbox::inParamsGetThisPublisherDecryptedEventInbox -->
+</message>
+
+<message name="GetThisPublisherDecryptedEventInboxResponse">
+  <part name="outParams" type="ns:GetThisPublisherDecryptedEventInboxOutParams"/><!-- ns__GetThisPublisherDecryptedEventInbox::outParams -->
+</message>
+
+<message name="GetThisPublisherDecryptedEventInboxStatus">
+  <part name="inParamsGetThisPublisherDecryptedEventInboxStatus" type="ns:GetThisPublisherDecryptedEventInboxStatusInParams"/><!-- ns__GetThisPublisherDecryptedEventInboxStatus::inParamsGetThisPublisherDecryptedEventInboxStatus -->
+</message>
+
+<message name="GetThisPublisherDecryptedEventInboxStatusResponse">
+  <part name="outParams" type="ns:GetThisPublisherDecryptedEventInboxStatusOutParams"/><!-- ns__GetThisPublisherDecryptedEventInboxStatus::outParams -->
+</message>
+
+<message name="AddEventToThisPublisherEventInbox">
+  <part name="inParamsAddEventToThisPublisherEventInbox" type="ns:AddEventToThisPublisherEventInboxInParams"/><!-- ns__AddEventToThisPublisherEventInbox::inParamsAddEventToThisPublisherEventInbox -->
+</message>
+
+<message name="AddEventToThisPublisherEventInboxResponse">
+  <part name="outParams" type="ns:AddEventToThisPublisherEventInboxOutParams"/><!-- ns__AddEventToThisPublisherEventInbox::outParams -->
+</message>
+
+<message name="AddEventToThisPublisherEventInboxStatus">
+  <part name="inParamsAddEventToThisPublisherEventInboxStatus" type="ns:AddEventToThisPublisherEventInboxStatusInParams"/><!-- ns__AddEventToThisPublisherEventInboxStatus::inParamsAddEventToThisPublisherEventInboxStatus -->
+</message>
+
+<message name="AddEventToThisPublisherEventInboxStatusResponse">
+  <part name="outParams" type="ns:AddEventToThisPublisherEventInboxStatusOutParams"/><!-- ns__AddEventToThisPublisherEventInboxStatus::outParams -->
+</message>
+
+<message name="GetObserverRequestedDocumentList">
+  <part name="inParamsGetObserverRequestedDocumentList" type="ns:GetObserverRequestedDocumentListInParams"/><!-- ns__GetObserverRequestedDocumentList::inParamsGetObserverRequestedDocumentList -->
+</message>
+
+<message name="GetObserverRequestedDocumentListResponse">
+  <part name="outParams" type="ns:GetObserverRequestedDocumentListOutParams"/><!-- ns__GetObserverRequestedDocumentList::outParams -->
+</message>
+
+<message name="GetObserverRequestedDocumentListStatus">
+  <part name="inParamsGetObserverRequestedDocumentListStatus" type="ns:GetObserverRequestedDocumentListStatusInParams"/><!-- ns__GetObserverRequestedDocumentListStatus::inParamsGetObserverRequestedDocumentListStatus -->
+</message>
+
+<message name="GetObserverRequestedDocumentListStatusResponse">
+  <part name="outParams" type="ns:GetObserverRequestedDocumentListStatusOutParams"/><!-- ns__GetObserverRequestedDocumentListStatus::outParams -->
+</message>
+
+<message name="SendObserverRequestDecision">
+  <part name="inParamsSendObserverRequestDecision" type="ns:SendObserverRequestDecisionInParams"/><!-- ns__SendObserverRequestDecision::inParamsSendObserverRequestDecision -->
+</message>
+
+<message name="SendObserverRequestDecisionResponse">
+  <part name="outParams" type="ns:SendObserverRequestDecisionOutParams"/><!-- ns__SendObserverRequestDecision::outParams -->
+</message>
+
+<portType name="DMPtoCKKDurableMediaInterfaceServicePortType">
+  <operation name="Setup">
+    <documentation>
+      Inicjalizacja wezla publikatora. 
+    </documentation>
+    <input message="tns:Setup"/>
+    <output message="tns:SetupResponse"/>
+  </operation>
+  <operation name="ForgetDocument">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:ForgetDocument"/>
+    <output message="tns:ForgetDocumentResponse"/>
+  </operation>
+  <operation name="ForgetDocumentJobStatus">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:ForgetDocumentJobStatus"/>
+    <output message="tns:ForgetDocumentJobStatusResponse"/>
+  </operation>
+  <operation name="PublishPrivateDocument">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:PublishPrivateDocument"/>
+    <output message="tns:PublishPrivateDocumentResponse"/>
+  </operation>
+  <operation name="PublishPublicDocument">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:PublishPublicDocument"/>
+    <output message="tns:PublishPublicDocumentResponse"/>
+  </operation>
+  <operation name="GetPublishStatus">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:GetPublishStatus"/>
+    <output message="tns:GetPublishStatusResponse"/>
+  </operation>
+  <operation name="GetDocument">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:GetDocument"/>
+    <output message="tns:GetDocumentResponse"/>
+  </operation>
+  <operation name="GetPrivateDocumentDecryptedPublisherCEK">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:GetPrivateDocumentDecryptedPublisherCEK"/>
+    <output message="tns:GetPrivateDocumentDecryptedPublisherCEKResponse"/>
+  </operation>
+  <operation name="GetPrivateDocumentAuthorizationCode">
+    <documentation>
+      Zapytanie sluzace do pobrania kodow autoryzacyjnych. 
+    </documentation>
+    <input message="tns:GetPrivateDocumentAuthorizationCode"/>
+    <output message="tns:GetPrivateDocumentAuthorizationCodeResponse"/>
+  </operation>
+  <operation name="GetPrivateDocumentAuthorizationCodeStatus">
+    <documentation>
+      Zapytanie sluzace do odpytania o status pobrania kodow autoryzacyjnych. 
+    </documentation>
+    <input message="tns:GetPrivateDocumentAuthorizationCodeStatus"/>
+    <output message="tns:GetPrivateDocumentAuthorizationCodeStatusResponse"/>
+  </operation>
+  <operation name="GetAllPublishers">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:GetAllPublishers"/>
+    <output message="tns:GetAllPublishersResponse"/>
+  </operation>
+  <operation name="GetThisPublisherAllDocumentsMetadata">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:GetThisPublisherAllDocumentsMetadata"/>
+    <output message="tns:GetThisPublisherAllDocumentsMetadataResponse"/>
+  </operation>
+  <operation name="GetSystemCategories">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:GetSystemCategories"/>
+    <output message="tns:GetSystemCategoriesResponse"/>
+  </operation>
+  <operation name="GetThisPublisherCategories">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:GetThisPublisherCategories"/>
+    <output message="tns:GetThisPublisherCategoriesResponse"/>
+  </operation>
+  <operation name="GetThisPublisherCategoriesStatus">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:GetThisPublisherCategoriesStatus"/>
+    <output message="tns:GetThisPublisherCategoriesStatusResponse"/>
+  </operation>
+  <operation name="SetThisPublisherCategories">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:SetThisPublisherCategories"/>
+    <output message="tns:SetThisPublisherCategoriesResponse"/>
+  </operation>
+  <operation name="SetThisPublisherCategoriesStatus">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:SetThisPublisherCategoriesStatus"/>
+    <output message="tns:SetThisPublisherCategoriesStatusResponse"/>
+  </operation>
+  <operation name="Hello">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:Hello"/>
+    <output message="tns:HelloResponse"/>
+  </operation>
+  <operation name="GetPublisherDocumentsMetadata">
+    <documentation>
+      Pobiera liste dokumentow opublikowanych przez danego publikatora. 
+    </documentation>
+    <input message="tns:GetPublisherDocumentsMetadata"/>
+    <output message="tns:GetPublisherDocumentsMetadataResponse"/>
+  </operation>
+  <operation name="GetPublisherDocumentsMetadataStatus">
+    <documentation>
+      Status pobierania listy dokumentow opublikowanych przez danego publikatora. 
+    </documentation>
+    <input message="tns:GetPublisherDocumentsMetadataStatus"/>
+    <output message="tns:GetPublisherDocumentsMetadataStatusResponse"/>
+  </operation>
+  <operation name="GetThisPublisherDecryptedDocumentIndex">
+    <documentation>
+      Pobiera liste adresow dokumentow prywatnych opublikowanych dla tego publikatora 
+    </documentation>
+    <input message="tns:GetThisPublisherDecryptedDocumentIndex"/>
+    <output message="tns:GetThisPublisherDecryptedDocumentIndexResponse"/>
+  </operation>
+  <operation name="IssueMaintenanceToken">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:IssueMaintenanceToken"/>
+    <output message="tns:IssueMaintenanceTokenResponse"/>
+  </operation>
+  <operation name="IssueMemberToken">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:IssueMemberToken"/>
+    <output message="tns:IssueMemberTokenResponse"/>
+  </operation>
+  <operation name="ClusterInfo">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:ClusterInfo"/>
+    <output message="tns:ClusterInfoResponse"/>
+  </operation>
+  <operation name="ClusterInfoStatus">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:ClusterInfoStatus"/>
+    <output message="tns:ClusterInfoStatusResponse"/>
+  </operation>
+  <operation name="ChangeIdentity">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:ChangeIdentity"/>
+    <output message="tns:ChangeIdentityResponse"/>
+  </operation>
+  <operation name="ChangeIdentityStatus">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:ChangeIdentityStatus"/>
+    <output message="tns:ChangeIdentityStatusResponse"/>
+  </operation>
+  <operation name="CheckIdentity">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:CheckIdentity"/>
+    <output message="tns:CheckIdentityResponse"/>
+  </operation>
+  <operation name="CheckIdentityStatus">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:CheckIdentityStatus"/>
+    <output message="tns:CheckIdentityStatusResponse"/>
+  </operation>
+  <operation name="AddSemiFullIdentity">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:AddSemiFullIdentity"/>
+    <output message="tns:AddSemiFullIdentityResponse"/>
+  </operation>
+  <operation name="AddSemiFullIdentityStatus">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:AddSemiFullIdentityStatus"/>
+    <output message="tns:AddSemiFullIdentityStatusResponse"/>
+  </operation>
+  <operation name="RemoveIdentity">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:RemoveIdentity"/>
+    <output message="tns:RemoveIdentityResponse"/>
+  </operation>
+  <operation name="RemoveIdentityStatus">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:RemoveIdentityStatus"/>
+    <output message="tns:RemoveIdentityStatusResponse"/>
+  </operation>
+  <operation name="GetRemoteSignatureDocuments">
+    <documentation>
+      Status dokumentow do zdalnego podpisu 
+    </documentation>
+    <input message="tns:GetRemoteSignatureDocuments"/>
+    <output message="tns:GetRemoteSignatureDocumentsResponse"/>
+  </operation>
+  <operation name="GetRemoteSignatureDocument">
+    <documentation>
+      Dane dokumentu czesciowo podpisanego 
+    </documentation>
+    <input message="tns:GetRemoteSignatureDocument"/>
+    <output message="tns:GetRemoteSignatureDocumentResponse"/>
+  </operation>
+  <operation name="CreateFolder">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:CreateFolder"/>
+    <output message="tns:CreateFolderResponse"/>
+  </operation>
+  <operation name="CreateFolderStatus">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:CreateFolderStatus"/>
+    <output message="tns:CreateFolderStatusResponse"/>
+  </operation>
+  <operation name="AddDocumentToFolder">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:AddDocumentToFolder"/>
+    <output message="tns:AddDocumentToFolderResponse"/>
+  </operation>
+  <operation name="AddDocumentToFolderStatus">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:AddDocumentToFolderStatus"/>
+    <output message="tns:AddDocumentToFolderStatusResponse"/>
+  </operation>
+  <operation name="GetThisPublisherDecryptedEventInbox">
+    <documentation>
+      Inicjuje pobieranie listy eventow dokumentowych dla tego publikatora 
+    </documentation>
+    <input message="tns:GetThisPublisherDecryptedEventInbox"/>
+    <output message="tns:GetThisPublisherDecryptedEventInboxResponse"/>
+  </operation>
+  <operation name="GetThisPublisherDecryptedEventInboxStatus">
+    <documentation>
+      Pobiera status transakcji pobrania listy eventow dokumentowych tego publikatora 
+    </documentation>
+    <input message="tns:GetThisPublisherDecryptedEventInboxStatus"/>
+    <output message="tns:GetThisPublisherDecryptedEventInboxStatusResponse"/>
+  </operation>
+  <operation name="AddEventToThisPublisherEventInbox">
+    <documentation>
+      Dodaje zdarzenie do skrzynki odbiorczej publikatora 
+    </documentation>
+    <input message="tns:AddEventToThisPublisherEventInbox"/>
+    <output message="tns:AddEventToThisPublisherEventInboxResponse"/>
+  </operation>
+  <operation name="AddEventToThisPublisherEventInboxStatus">
+    <documentation>
+      Pobiera status dodania zdarzenia do skrzynki odbiorczej publikatora 
+    </documentation>
+    <input message="tns:AddEventToThisPublisherEventInboxStatus"/>
+    <output message="tns:AddEventToThisPublisherEventInboxStatusResponse"/>
+  </operation>
+  <operation name="GetObserverRequestedDocumentList">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:GetObserverRequestedDocumentList"/>
+    <output message="tns:GetObserverRequestedDocumentListResponse"/>
+  </operation>
+  <operation name="GetObserverRequestedDocumentListStatus">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:GetObserverRequestedDocumentListStatus"/>
+    <output message="tns:GetObserverRequestedDocumentListStatusResponse"/>
+  </operation>
+  <operation name="SendObserverRequestDecision">
+    <documentation>
+      TBD-200 
+    </documentation>
+    <input message="tns:SendObserverRequestDecision"/>
+    <output message="tns:SendObserverRequestDecisionResponse"/>
+  </operation>
+</portType>
+
+<binding name="DMPtoCKKDurableMediaInterfacePortBinding" type="tns:DMPtoCKKDurableMediaInterfaceServicePortType">
+  <SOAP:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+  <operation name="Setup">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="ForgetDocument">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="ForgetDocumentJobStatus">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="PublishPrivateDocument">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="PublishPublicDocument">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetPublishStatus">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetDocument">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetPrivateDocumentDecryptedPublisherCEK">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetPrivateDocumentAuthorizationCode">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetPrivateDocumentAuthorizationCodeStatus">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetAllPublishers">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetThisPublisherAllDocumentsMetadata">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetSystemCategories">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetThisPublisherCategories">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetThisPublisherCategoriesStatus">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="SetThisPublisherCategories">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="SetThisPublisherCategoriesStatus">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="Hello">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetPublisherDocumentsMetadata">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetPublisherDocumentsMetadataStatus">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetThisPublisherDecryptedDocumentIndex">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="IssueMaintenanceToken">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="IssueMemberToken">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="ClusterInfo">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="ClusterInfoStatus">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="ChangeIdentity">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="ChangeIdentityStatus">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="CheckIdentity">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="CheckIdentityStatus">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="AddSemiFullIdentity">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="AddSemiFullIdentityStatus">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="RemoveIdentity">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="RemoveIdentityStatus">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetRemoteSignatureDocuments">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetRemoteSignatureDocument">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="CreateFolder">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="CreateFolderStatus">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="AddDocumentToFolder">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="AddDocumentToFolderStatus">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetThisPublisherDecryptedEventInbox">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetThisPublisherDecryptedEventInboxStatus">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="AddEventToThisPublisherEventInbox">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="AddEventToThisPublisherEventInboxStatus">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetObserverRequestedDocumentList">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetObserverRequestedDocumentListStatus">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="SendObserverRequestDecision">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://DMPtoCKKDurableMediaInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+</binding>
+
+<service name="DMPtoCKKDurableMediaInterfaceService">
+  <documentation>gSOAP 2.8.95 generated service definition</documentation>
+  <port name="DMPtoCKKDurableMediaInterfaceService" binding="tns:DMPtoCKKDurableMediaInterfacePortBinding">
+    <SOAP:address location="REPLACE_WITH_ACTUAL_URL"/>
+  </port>
+</service>
+
+</definitions>

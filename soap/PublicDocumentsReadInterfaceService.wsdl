@@ -1,0 +1,694 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="PublicDocumentsReadInterfaceService"
+  targetNamespace="https://PublicDocumentsReadInterface.dm.billongroup.com/"
+  xmlns:tns="https://PublicDocumentsReadInterface.dm.billongroup.com/"
+  xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:ns2="https://Types.dm.billongroup.com/"
+  xmlns:ns="https://PublicDocumentsReadInterface.dm.billongroup.com/"
+  xmlns:SOAP="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:HTTP="http://schemas.xmlsoap.org/wsdl/http/"
+  xmlns:MIME="http://schemas.xmlsoap.org/wsdl/mime/"
+  xmlns:DIME="http://schemas.xmlsoap.org/ws/2002/04/dime/wsdl/"
+  xmlns:WSDL="http://schemas.xmlsoap.org/wsdl/"
+  xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+<types>
+
+  <schema targetNamespace="https://PublicDocumentsReadInterface.dm.billongroup.com/"
+    xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:ns2="https://Types.dm.billongroup.com/"
+    xmlns:ns="https://PublicDocumentsReadInterface.dm.billongroup.com/"
+    xmlns="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="unqualified"
+    attributeFormDefault="unqualified">
+    <import namespace="https://Types.dm.billongroup.com/" schemaLocation="ns2.xsd"/>
+    <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+    <complexType name="HelloInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__Hello   Pobiera opis stanu wezla. 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="referenceId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Referencyjny identyfikator requestu. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="HelloOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__Hello   Pobiera opis stanu wezla. 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="machineId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator maszyny. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="userId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator uzytkownika. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="nodeStatus" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status serwera VUI. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="pid" type="xsd:int" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator procesu. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="daemon" type="xsd:boolean" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Wartosc "true", jezeli serwer jest demonem. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="userName" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Nazwa uzytkownika. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="miPort" type="xsd:int" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Port serwera VUI. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="soapPort" type="xsd:int" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Port servera SOAP. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="sslRequired" type="xsd:boolean" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Wartosc "true", jezeli serwer wymaga protokol SSL. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="version" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Informacje o wersji serwera. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="engineVersion" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Informacje o wersji silnika wykorzystywanego w serwerze. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="apiVersion" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Informacje o wersji API. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetAllPublishersInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__GetAllPublishers   Pobiera liste informacji o publikatorach w systemie. 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="referenceId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Referencyjny identyfikator requestu. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="supervisorId" type="xsd:string" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator supervisora. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetAllPublishersOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetAllPublishers   Pobiera liste informacji o publikatorach w systemie. 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="publishersList" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <documentation>
+                Lista identyfikatorow wszystkich publikatorow w systemie. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetDocumentIndexInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__GetDocumentIndex   Pobiera liste adresow dokumentow publicznych (opcjonalnie dodatkowo prywatnych) opublikowanych przez publikatora o podanym identyfikatorze. 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="referenceId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Referencyjny identyfikator requestu. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="publisherId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator publikatora. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="includePrivateDocuments" type="xsd:boolean" minOccurs="0" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Decyzja o uwzglednieniu dokumentow prywatnych w liscie. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetDocumentIndexOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetDocumentIndex   Pobiera liste adresow dokumentow publicznych (opcjonalnie dodatkowo prywatnych) opublikowanych przez publikatora o podanym identyfikatorze. 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="indexEntriesList" type="ns2:PublicIndexEntry" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <documentation>
+                Lista wpisow indeksow dokumentow. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetPublisherCategoriesInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__GetPublisherCategories   Pobiera liste kategorii wybranego publikatora. 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="referenceId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Referencyjny identyfikator requestu. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="publisherId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator publikatora do ktorego odnosi sie zapytanie. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetPublisherCategoriesOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetPublisherCategories   Pobiera liste kategorii wybranego publikatora. 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="categories" type="ns2:DocumentCategory" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <documentation>
+                Lista wezlow drzewa kategorii. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetSystemCategoriesInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__GetSystemCategories   Pobiera liste systemowych kategorii. 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="referenceId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Referencyjny identyfikator requestu. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetSystemCategoriesOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetSystemCategories   Pobiera liste systemowych kategorii. 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="categories" type="ns2:DocumentCategory" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <documentation>
+                Lista wezlow drzewa kategorii. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetDocumentInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__GetDocument   Pobiera dokument po podanym adresie. 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="referenceId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Referencyjny identyfikator requestu. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="documentBlockchainAddress" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Adres (identyfikator) odczytywanego dokumentu. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetDocumentOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetDocument   Pobiera dokument po podanym adresie. 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="documentInfo" type="ns2:DocumentInfo" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Informacja o odczytywanym dokumencie (informacje z  publikacji, w tym sygnatura). 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="IsNewestDocumentVersionInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__IsNewestDocumentVersion   Zwraca informacje czy podany dokument jest najnowsza wersja. 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="referenceId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Referencyjny identyfikator requestu. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="documentBlockchainAddress" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Adres (identyfikator) dokumentu. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="publisherId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator publikatora. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="IsNewestDocumentVersionOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__IsNewestDocumentVersion   Zwraca informacje czy podany dokument jest najnowsza wersja. 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="isNewestVersion" type="xsd:boolean" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Definiuje czy dokument jest najnowsza wersja. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetDocumentVersionsInParams">
+      <annotation>
+        <documentation>
+          Input parameters for function: ns__GetDocumentVersions   Zwraca zbior dokumentow powiazanych z danym dokumentem (jego starsze i nowsze wersje). 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="referenceId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Referencyjny identyfikator requestu. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="documentBlockchainAddress" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Adres (identyfikator) dokumentu. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="publisherId" type="xsd:string" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Identyfikator publikatora. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+    <complexType name="GetDocumentVersionsOutParams">
+      <annotation>
+        <documentation>
+          Output parameters for function: ns__GetDocumentVersions   Zwraca zbior dokumentow powiazanych z danym dokumentem (jego starsze i nowsze wersje). 
+        </documentation>
+      </annotation>
+          <sequence>
+            <element name="relatedDocuments" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+            <annotation>
+              <documentation>
+                Zbior adresow powiazanych dokumentow. 
+              </documentation>
+            </annotation>
+            </element>
+            <element name="status" type="ns2:DurableMediaStatus" minOccurs="1" maxOccurs="1">
+            <annotation>
+              <documentation>
+                Status operacji. 
+              </documentation>
+            </annotation>
+            </element>
+          </sequence>
+    </complexType>
+  </schema>
+
+</types>
+
+<message name="Hello">
+  <part name="inParamsHello" type="ns:HelloInParams"/><!-- ns__Hello::inParamsHello -->
+</message>
+
+<message name="HelloResponse">
+  <part name="outParams" type="ns:HelloOutParams"/><!-- ns__Hello::outParams -->
+</message>
+
+<message name="GetAllPublishers">
+  <part name="inParamsGetAllPublishers" type="ns:GetAllPublishersInParams"/><!-- ns__GetAllPublishers::inParamsGetAllPublishers -->
+</message>
+
+<message name="GetAllPublishersResponse">
+  <part name="outParams" type="ns:GetAllPublishersOutParams"/><!-- ns__GetAllPublishers::outParams -->
+</message>
+
+<message name="GetDocumentIndex">
+  <part name="inParamsGetDocumentIndex" type="ns:GetDocumentIndexInParams"/><!-- ns__GetDocumentIndex::inParamsGetDocumentIndex -->
+</message>
+
+<message name="GetDocumentIndexResponse">
+  <part name="outParams" type="ns:GetDocumentIndexOutParams"/><!-- ns__GetDocumentIndex::outParams -->
+</message>
+
+<message name="GetPublisherCategories">
+  <part name="inParamsGetPublisherCategories" type="ns:GetPublisherCategoriesInParams"/><!-- ns__GetPublisherCategories::inParamsGetPublisherCategories -->
+</message>
+
+<message name="GetPublisherCategoriesResponse">
+  <part name="outParams" type="ns:GetPublisherCategoriesOutParams"/><!-- ns__GetPublisherCategories::outParams -->
+</message>
+
+<message name="GetSystemCategories">
+  <part name="inParamsGetSystemCategories" type="ns:GetSystemCategoriesInParams"/><!-- ns__GetSystemCategories::inParamsGetSystemCategories -->
+</message>
+
+<message name="GetSystemCategoriesResponse">
+  <part name="outParams" type="ns:GetSystemCategoriesOutParams"/><!-- ns__GetSystemCategories::outParams -->
+</message>
+
+<message name="GetDocument">
+  <part name="inParamsGetDocument" type="ns:GetDocumentInParams"/><!-- ns__GetDocument::inParamsGetDocument -->
+</message>
+
+<message name="GetDocumentResponse">
+  <part name="outParams" type="ns:GetDocumentOutParams"/><!-- ns__GetDocument::outParams -->
+</message>
+
+<message name="IsNewestDocumentVersion">
+  <part name="inParamsIsNewestDocumentVersion" type="ns:IsNewestDocumentVersionInParams"/><!-- ns__IsNewestDocumentVersion::inParamsIsNewestDocumentVersion -->
+</message>
+
+<message name="IsNewestDocumentVersionResponse">
+  <part name="outParams" type="ns:IsNewestDocumentVersionOutParams"/><!-- ns__IsNewestDocumentVersion::outParams -->
+</message>
+
+<message name="GetDocumentVersions">
+  <part name="inParamsGetDocumentVersions" type="ns:GetDocumentVersionsInParams"/><!-- ns__GetDocumentVersions::inParamsGetDocumentVersions -->
+</message>
+
+<message name="GetDocumentVersionsResponse">
+  <part name="outParams" type="ns:GetDocumentVersionsOutParams"/><!-- ns__GetDocumentVersions::outParams -->
+</message>
+
+<portType name="PublicDocumentsReadInterfaceServicePortType">
+  <operation name="Hello">
+    <documentation>
+      Pobiera opis stanu wezla. 
+    </documentation>
+    <input message="tns:Hello"/>
+    <output message="tns:HelloResponse"/>
+  </operation>
+  <operation name="GetAllPublishers">
+    <documentation>
+      Pobiera liste informacji o publikatorach w systemie. 
+    </documentation>
+    <input message="tns:GetAllPublishers"/>
+    <output message="tns:GetAllPublishersResponse"/>
+  </operation>
+  <operation name="GetDocumentIndex">
+    <documentation>
+      Pobiera liste adresow dokumentow publicznych (opcjonalnie dodatkowo prywatnych) opublikowanych przez publikatora o podanym identyfikatorze. 
+    </documentation>
+    <input message="tns:GetDocumentIndex"/>
+    <output message="tns:GetDocumentIndexResponse"/>
+  </operation>
+  <operation name="GetPublisherCategories">
+    <documentation>
+      Pobiera liste kategorii wybranego publikatora. 
+    </documentation>
+    <input message="tns:GetPublisherCategories"/>
+    <output message="tns:GetPublisherCategoriesResponse"/>
+  </operation>
+  <operation name="GetSystemCategories">
+    <documentation>
+      Pobiera liste systemowych kategorii. 
+    </documentation>
+    <input message="tns:GetSystemCategories"/>
+    <output message="tns:GetSystemCategoriesResponse"/>
+  </operation>
+  <operation name="GetDocument">
+    <documentation>
+      Pobiera dokument po podanym adresie. 
+    </documentation>
+    <input message="tns:GetDocument"/>
+    <output message="tns:GetDocumentResponse"/>
+  </operation>
+  <operation name="IsNewestDocumentVersion">
+    <documentation>
+      Zwraca informacje czy podany dokument jest najnowsza wersja. 
+    </documentation>
+    <input message="tns:IsNewestDocumentVersion"/>
+    <output message="tns:IsNewestDocumentVersionResponse"/>
+  </operation>
+  <operation name="GetDocumentVersions">
+    <documentation>
+      Zwraca zbior dokumentow powiazanych z danym dokumentem (jego starsze i nowsze wersje). 
+    </documentation>
+    <input message="tns:GetDocumentVersions"/>
+    <output message="tns:GetDocumentVersionsResponse"/>
+  </operation>
+</portType>
+
+<binding name="PublicDocumentsReadInterfacePortBinding" type="tns:PublicDocumentsReadInterfaceServicePortType">
+  <SOAP:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+  <operation name="Hello">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://PublicDocumentsReadInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://PublicDocumentsReadInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetAllPublishers">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://PublicDocumentsReadInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://PublicDocumentsReadInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetDocumentIndex">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://PublicDocumentsReadInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://PublicDocumentsReadInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetPublisherCategories">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://PublicDocumentsReadInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://PublicDocumentsReadInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetSystemCategories">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://PublicDocumentsReadInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://PublicDocumentsReadInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetDocument">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://PublicDocumentsReadInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://PublicDocumentsReadInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="IsNewestDocumentVersion">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://PublicDocumentsReadInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://PublicDocumentsReadInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+  <operation name="GetDocumentVersions">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body use="literal" namespace="https://PublicDocumentsReadInterface.dm.billongroup.com/"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" namespace="https://PublicDocumentsReadInterface.dm.billongroup.com/"/>
+    </output>
+  </operation>
+</binding>
+
+<service name="PublicDocumentsReadInterfaceService">
+  <documentation>gSOAP 2.8.95 generated service definition</documentation>
+  <port name="PublicDocumentsReadInterfaceService" binding="tns:PublicDocumentsReadInterfacePortBinding">
+    <SOAP:address location="REPLACE_WITH_ACTUAL_URL"/>
+  </port>
+</service>
+
+</definitions>
