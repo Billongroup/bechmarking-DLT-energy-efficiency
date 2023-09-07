@@ -1,19 +1,22 @@
 #!/usr/bin/env python3
 # coding=utf-8
-# Billon 2021
+# Billon 2023
 
 # QUICK README
 """
 Script for publishing public and private documents with random content.
 Main parameters (see Config):
-    documentsToPublish - number of documents to publish per publisher
-    sizeKB - size of document
+    documentsToPublish - number of documents to publish per publisher (cannot cannot exceed the number of predefined pdf)
+    use_predefined_pdfs - whether to use predefined pdf files
+    pdf_dir - path to directory with pdfs to publish (not necessary for random documents test)
+    sizeKB - size of document (only for documents test)
     max_queue_size - max number of publications in progress
     min_queue_size - min number of publications in progress
     identitiesFilename - file with identities to be used for private documents
+
 Script generates raport and writes it to the file
 
-Usage examples:
+Usage examples: (Step 1 and 2 are obligatory, without setup publication is disabled)
     1) ./DurableMediaTest.py --publishers "{'10.0.20.140': ['31404']}" setup
     2) ./DurableMediaTest.py --publishers "{'10.0.20.140': ['31404']}" categories
     3) [public]./DurableMediaTest.py --publishers "{'10.0.20.140': ['31404']}" run
@@ -29,8 +32,10 @@ needed files:
     DurableMediaTestConfig.py
     publishers.csv (only for private documents) {two columns with pubID, pubCIF}
     soap folder with wsdls
+    pdfs folder with pdf files to publish (not necessary for random documents test)
 """
 from requests import RequestException
+import base64
 
 try:
     from DurableMediaTestConfig import Config
@@ -54,6 +59,7 @@ import random
 import signal
 import sys
 import base58
+import glob
 from collections import defaultdict
 from pathlib import Path
 from pdfrw import PdfReader, PdfWriter
@@ -67,6 +73,11 @@ global_state = None
 def signal_handler(sig, frame):
     logger.warning('Exiting, signal {} called'.format(sig))
     global_state.exit.set()
+
+
+def pdf_getter():
+    for pdf in glob.glob('./pdfs/*pdf'):
+        yield pdf
 
 
 class ExtendedDocsPublishingManager:
@@ -256,6 +267,7 @@ class MutatingPublisherState:
             with self.docHashLock:
                 self.doc_hashes.append(self.csv_reader.__next__()[0])
 
+
 class SinglePublisherState:
     def __init__(self, conf, url, to_publish, private=False, reportCatalog = None, readUrl = None):
         self.conf = conf
@@ -373,7 +385,7 @@ class SinglePublisherState:
             'time_to_init': time_to_init,
             'dur_brg_time': duration_brg_time,
             'dur_read_time': read_time,
-            'prev_doc' : prev_doc,
+            'prev_doc': prev_doc,
             'published_by': published_by,
             'read_by': read_by
         }
@@ -429,6 +441,20 @@ class SinglePublisherState:
             result = str.encode("%PDF-1.1") + str.encode(suffix) + self.binaries[sizeKB]
         return result
 
+    def getNextPdf(self, generator=pdf_getter()):
+        if not self.conf.use_predefined_pdfs:
+            return self.getRandomContent(int(self.conf.sizeKB), )
+        try:
+            pdf_path = next(generator)
+        except Exception as err:
+            print(err)
+            return None
+        trailer = PdfReader(pdf_path)
+        myio = BytesIO()
+        PdfWriter(trailer=trailer).write(myio)
+        myio.seek(0)
+        return myio.getvalue()
+
     def calculateQueue(self, minimum, maximum):
         max_active_now = self.mut.max_active
         if maximum < 0:
@@ -473,7 +499,8 @@ class SinglePublisherState:
             self.mut.active -= 1
             return False
 
-    def processPublication(self, pub : PublicationSlot, loop_stats, threadNo):
+    def processPublication(self, pub: PublicationSlot, loop_stats, threadNo, content=None,
+                           additional_details='Here be PUBLIC additional details', documentMainCategory='ROOT', title=None):
         global global_state
         try:
             repeatPub = True
@@ -485,10 +512,13 @@ class SinglePublisherState:
                     loop_stats.stats_checked_ready += 1
                     start = self.conf.getTime()
                     index = self.mut.incGetIndex()
-                    content = self.getRandomContent(int(self.conf.sizeKB), str(index) + 'A' + str(threadNo) + 'time' + str(start)+ '@' + self.url)
+                    content = content or self.getRandomContent(int(self.conf.sizeKB), str(index) + 'A' + str(threadNo) + 'time' + str(start)+ '@' + self.url)
+                    if content == None:
+                        raise BaseException('Problem with pdf getter')
                     creationDate = str(int(start) * 10**6)
                     hashContent = Utils.md5(content)
                     randomText = 'RandomText_i' + str(index) + 't' + str(threadNo) + '@' + self.url
+                    title = title or randomText
                     try:
                         sendStartTime = self.conf.getTime()
                         retentionDate = Utils.getRandomRetention()
@@ -498,15 +528,15 @@ class SinglePublisherState:
                                 'publisherCif': 'none',
                                 'publicationMode': 'NEW',
                                 'documentData': {
-                                    'title': randomText,
+                                    'title': title,
                                     'sourceDocument': content,
-                                    'documentMainCategory': 'ROOT',
+                                    'documentMainCategory': documentMainCategory,
                                     'documentSystemCategory': 'ROOT',
                                     'BLOCKCHAINlegalValidityStartDate': creationDate,
                                     'BLOCKCHAINexpirationDate': retentionDate,
                                     'BLOCKCHAINretentionDate': retentionDate,
                                     'extension': 'PDF',
-                                    'additionalDetails': 'Here be PUBLIC additional details',
+                                    'additionalDetails': additional_details,
                                     'privateAdditionalDetails': 'Here be PRIVATE additional details',
                                 },
                                 'authorizedUsersList' : pub.cif,
@@ -848,7 +878,7 @@ class SinglePublisherState:
         self.mut.active = reserved_num
 
         threads_per_publisher = min(self.conf.threads_per_publisher, maximum)
-        if(threads_per_publisher < 0):
+        if threads_per_publisher < 0:
             threads_per_publisher = self.conf.threads_per_publisher
         executor = concurrent.futures.ThreadPoolExecutor(threads_per_publisher)
         threadNo = 0
@@ -884,7 +914,8 @@ class SinglePublisherState:
             loop_stats = LoopStats()
             futures = []
             for pub in publicationsInProgress:
-                futures.append(executor.submit(self.processPublication, pub, loop_stats, threadNo))
+                content = self.getNextPdf()
+                futures.append(executor.submit(self.processPublication, pub, loop_stats, threadNo, content))
                 threadNo += 1
             concurrent.futures.wait(futures, timeout=None)
 
@@ -932,6 +963,14 @@ class Utils:
     @staticmethod
     def md5(content):
         return hashlib.md5(content).hexdigest()
+
+    @staticmethod
+    def getNextPdf():
+        pdfs = glob.glob('*pdf')
+        for pdf in pdfs:
+            with open(pdf, "rb") as pdf_file:
+                pdf_data = pdf_file.read()
+            yield base64.b64encode(pdf_data).decode("utf-8")
 
     @staticmethod
     def getRandomRetention():
@@ -1164,7 +1203,7 @@ class DocsPublishingManager:
             for pub, sleep_for in zip(self.publishers.keys(), range(self.MAX_WORKERS, 0, -1)):
                 logger.debug("Starting {}, sleep {}".format(pub, sleep_for))
                 to_publish = self.getDocumentsToPublish(pub)
-                single_publisher = SinglePublisherState(self.conf, pub, to_publish, private=private, reportCatalog=Path(self.reportName).stem, readUrl= pubReader[pub])
+                single_publisher = SinglePublisherState(self.conf, pub, to_publish, private=private, reportCatalog=Path(self.reportName).stem, readUrl=pubReader[pub])
                 futures.append(pool.apply_async(single_publisher.sendPublishDocument, args=(sleep_for*0.05, self.move_intermediate_results, printProgress)))
                 printProgress = False
             logger.debug("Started {} processes".format(len(self.publishers)))

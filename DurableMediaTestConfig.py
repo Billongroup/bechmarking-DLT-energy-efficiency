@@ -2,11 +2,10 @@ import argparse
 import importlib
 import re
 import time
-
-
+import glob
 
 class Config:
-    def __init__(self):
+    def __init__(self, pdf_dir='./pdfs'):
         self.pubs = {
             '192.168.0.1': [
                 '16201',
@@ -16,7 +15,7 @@ class Config:
             ]
         }
         # Documents to publish per publisher
-        self.documents_to_publish = 1000000000
+        self.documents_to_publish = 3
         self.sizeKB = 500
         # Max publications in progress per publisher
         self.max_queue_size = 20
@@ -24,6 +23,8 @@ class Config:
         self.min_queue_size = 1
         self.send_delay = 0
         self.identitiesFilename = 'publishers.csv'
+        self.use_predefined_pdfs = True
+        self.pdf_dir = pdf_dir
 
         self.ACC = 3
 
@@ -50,6 +51,9 @@ class Config:
         self.rcv_publishers = None
         self.test_duration = 0
         self.pdf_file = None
+        if self.use_predefined_pdfs and len(glob.glob(f'{self.pdf_dir}/*pdf')) < self.documents_to_publish:
+            print(f'Cannot publish {self.documents_to_publish} documents, number of available pdf files: {len(glob.glob(f"{self.pdf_dir}/*pdf"))}')
+            self.documents_to_publish = len(glob.glob(f'{self.pdf_dir}/*pdf'))
 
     def getTime(self):
         return round(time.time(), self.ACC)
