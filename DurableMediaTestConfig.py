@@ -3,17 +3,13 @@ import importlib
 import re
 import time
 import glob
+import yaml
+from functools import partial
+
 
 class Config:
     def __init__(self, pdf_dir='./pdfs'):
-        self.pubs = {
-            '192.168.0.1': [
-                '16201',
-            ],
-            '192.168.0.2': [
-                '16201',
-            ]
-        }
+        self.pubs = {}
         # Documents to publish per publisher
         self.documents_to_publish = 3
         self.sizeKB = 500
@@ -23,7 +19,7 @@ class Config:
         self.min_queue_size = 1
         self.send_delay = 0
         self.identitiesFilename = 'publishers.csv'
-        self.use_predefined_pdfs = True
+        self.use_predefined_pdfs = False
         self.pdf_dir = pdf_dir
 
         self.ACC = 3
@@ -51,9 +47,9 @@ class Config:
         self.rcv_publishers = None
         self.test_duration = 0
         self.pdf_file = None
-        if self.use_predefined_pdfs and len(glob.glob(f'{self.pdf_dir}/*pdf')) < self.documents_to_publish:
-            print(f'Cannot publish {self.documents_to_publish} documents, number of available pdf files: {len(glob.glob(f"{self.pdf_dir}/*pdf"))}')
-            self.documents_to_publish = len(glob.glob(f'{self.pdf_dir}/*pdf'))
+        self.pdf_getter = None
+        self.pubs_instruction = {}
+        self.pubs_categories = {}
 
     def getTime(self):
         return round(time.time(), self.ACC)
@@ -94,6 +90,63 @@ class Config:
             if numPublishers >= publishersLimit:
                 break
 
+    def findPubsOnColony(self, borgUtils, publishersLimit=None, group_id=None, sub_name='PUBLISHER'):
+        publishersLimit = publishersLimit or 999999
+        numPublishers = 0
+        self.pubs = {}
+        for server in borgUtils.get_colony_servers():
+            host = server['host']
+            ports = []
+            nodes = borgUtils.update_nodes_info_master(servers_list=[server])
+            for node in nodes:
+                if not hasattr(node, 'group_type') or node.group_type != 'GROUPPUBLISHER':
+                    continue
+                if node.user is None or sub_name not in node.user:
+                    continue
+                if group_id is not None and node.group_id != group_id:
+                    continue
+                port = node.get_parameter('durmedport')
+                if port is None:
+                    print('strange, found publisher without port: ' + node.user + '  ' + node.parameters)
+                    continue
+                ports.append(int(port))
+                numPublishers += 1
+                if numPublishers >= publishersLimit:
+                    break
+            if ports:
+                self.pubs[host] = ports
+            if numPublishers >= publishersLimit:
+                break
+
+    def input_file_analyser(self, input_file):
+        with open(input_file, 'r', encoding='utf-8') as stream:
+            data_loaded = yaml.safe_load(stream)
+        for record in data_loaded:
+            url = record['url']
+            ip, port = url.split('/')[-1].split(':')
+            if ip not in self.pubs.keys():
+                self.pubs[ip] = []
+            if port not in self.pubs[ip]:
+                self.pubs[ip].append(port)
+            if url not in self.pubs_instruction:
+                self.pubs_instruction[url] = []
+                self.pubs_categories[url] = set()
+            del record['url']
+            self.pubs_instruction[url].append(record)
+            self.pubs_categories[url].add(record['category'])
+
+    def precise_pdf_getter(self, pub):
+        for r in self.pubs_instruction[pub]:
+            yield r['source_documents'], r['additional_details'], r['category'], r['title']
+
+    def default_pdf_getter(self, pub):
+        additional_details = f'Here be PUBLIC additional details for {pub}'
+        documentMainCategory = 'ROOT'
+        title = None
+        print(glob.glob(f'{self.pdf_dir}/*pdf'))
+        for pdf in glob.glob(f'{self.pdf_dir}/*pdf'):
+            yield [pdf], additional_details, documentMainCategory, title
+
     def readConfFromArgparse(self, params):
 
         parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
@@ -102,6 +155,7 @@ class Config:
         parser.add_argument('--publishers', help='Override publishers config')
         parser.add_argument('--publishers_limit', help='Only select a few first publishers from config', type=int)
         parser.add_argument('--identities', action='store', type=str, help='Name of the file with identities list.')
+        parser.add_argument('--input_file', action='store', type=str, help='Name of the yaml file with publication instruction.')
         parser.add_argument('-n', '--num_publications', help='How many documents per publisher will be published', type=int, default=self.documents_to_publish)
         parser.add_argument('-s', '--size', help='Size of documents to publish [kB]', type=int, default=self.sizeKB)
         parser.add_argument('-q', '--queue_size', help='Max number of concurrent publications', type=int, default=self.max_queue_size)
@@ -116,12 +170,13 @@ class Config:
         parser.add_argument('-v', '--verbose', help='verbose output on console', action='store_true', default=self.verbose)
         parser.add_argument('--read_after', help='Reads document after successful publishing', action='store_true', default=self.read_after)
         parser.add_argument('--write_on_disk', help='Reads document after successful publishing', action='store_true', default=self.read_after)
-        parser.add_argument('--read_only', help='Reads all documents from provided csv file', default = None)
-        parser.add_argument('--update', help='Updates all documents provided in csv file', default = None)
+        parser.add_argument('--read_only', help='Reads all documents from provided csv file', default=None)
+        parser.add_argument('--update', help='Updates all documents provided in csv file', default=None)
         parser.add_argument('--update_immediate', help='Updates documents right after publish', type=int, default = 0)
         parser.add_argument('--test_duration', help='Test duration in seconds', type=int, default = 0)
         parser.add_argument('--rcv_publishers', help='Publishers receiving private docs')
         parser.add_argument('--pdf_file', help='Path to pdf to publish', default=None)
+        parser.add_argument('--use_predefined_pdfs', action='store_true', default=False, help='Use predefined pdf from ./pdfs directory')
 
 
         args = parser.parse_args(params)
@@ -163,3 +218,18 @@ class Config:
             self.documents_to_publish = args.num_publications
         if args.identities:
             self.identitiesFilename = args.identities
+        if args.use_predefined_pdfs:
+            self.use_predefined_pdfs = True
+        if args.input_file:
+            self.use_predefined_pdfs = True
+            # TODO stworzenie na podstawie pliku zlownika (url_publikatora, [lista opisow publikacji])
+            self.input_file = args.input_file
+            self.input_file_analyser(args.input_file)
+            self.pdf_getter = self.precise_pdf_getter
+            # TODO sprwadzenie, czy mamy dosc dokumentow do opublikowania??
+        elif self.use_predefined_pdfs:
+            if len(glob.glob(f'{self.pdf_dir}/*pdf')) < self.documents_to_publish * sum(list(len(self.pubs[i]) for i in self.pubs)):
+                print(
+                    f'Cannot publish {self.documents_to_publish * sum(list(len(self.pubs[i]) for i in self.pubs))} documents, number of available pdf files: {len(glob.glob(f"{self.pdf_dir}/*pdf"))}')
+                self.documents_to_publish = len(glob.glob(f'{self.pdf_dir}/*pdf'))
+            self.pdf_getter = self.default_pdf_getter
